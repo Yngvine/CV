@@ -60,16 +60,48 @@
     "Art/Music",
     "Game development"
   ],
-  "aptitudes": {
-    "Python": "Advanced",
-    "Django": "Intermediate",
-    "C/C++": "Intermediate",
-    "C#/.NET": "Basic",
-    "JavaScript": "Intermediate",
-    "Java": "Basic",
-    "SQL": "Intermediate",
-    "Git": "Advanced"
-  },
+  "aptitudes": [
+    {
+      "name": "Python",
+      "level": "Advanced",
+      "icon": "logos:python"
+    },
+    {
+      "name": "Django",
+      "level": "Intermediate",
+      "icon": "vscode-icons:file-type-django"
+    },
+    {
+      "name": "C/C++",
+      "level": "Intermediate",
+      "icon": "logos:c-plusplus"
+    },
+    {
+      "name": "C#/.NET",
+      "level": "Basic",
+      "icon": "devicon:csharp"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Intermediate",
+      "icon": "logos:javascript"
+    },
+    {
+      "name": "Java",
+      "level": "Basic",
+      "icon": "logos:java"
+    },
+    {
+      "name": "SQL",
+      "level": "Intermediate",
+      "icon": "vscode-icons:file-type-sql"
+    },
+    {
+      "name": "Git",
+      "level": "Advanced",
+      "icon": "logos:git"
+    }
+  ],
   "languages": {
     "Español": "Mother tongue",
     "Ucraniano": "Mother tongue",

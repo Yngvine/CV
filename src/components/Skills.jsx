@@ -1,17 +1,29 @@
-import React from "react";
-// State
+
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectMode } from "../app/appSlice";
-// Components
 import { Element } from "react-scroll";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { Icon } from "@iconify/react";
 import Title from "./Title";
-// Config
-import { skillData, resume } from "../config";
+import { resume } from "../config";
 
-// #region component
 const Skills = () => {
   const theme = useSelector(selectMode);
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    fetch('/CV.json')
+      .then(response => response.json())
+      .then(data => {
+        setSkills(data.aptitudes.map((skill, index) => ({
+          id: index + 1,
+          skill: <Icon icon={skill.icon} className="display-4" />,
+          name: `${skill.name} (${skill.level})`
+        })));
+      })
+      .catch(error => console.error('Error loading skills:', error));
+  }, []);
 
   return (
     <Element name={"Skills"} id="skills">
@@ -21,16 +33,14 @@ const Skills = () => {
             <Title size={"h2"} text={"Skills"} />
           </Container>
           <Row className="mt-3 align-items-center">
-            {skillData.map((skills) => {
-              return (
-                <Col xs={4} key={skills.id} className="my-md-5">
-                  <figure>
-                    {skills.skill}
-                    <figcaption>{skills.name}</figcaption>
-                  </figure>
-                </Col>
-              );
-            })}
+            {skills.map((skill) => (
+              <Col xs={4} key={skill.id} className="my-md-5">
+                <figure>
+                  {skill.skill}
+                  <figcaption>{skill.name}</figcaption>
+                </figure>
+              </Col>
+            ))}
           </Row>
           {resume && (
             <a href={resume}>
@@ -48,6 +58,5 @@ const Skills = () => {
     </Element>
   );
 };
-// #endregion
 
 export default Skills;
