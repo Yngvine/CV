@@ -1,20 +1,39 @@
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 // Styles
 import styled from "styled-components";
 // Components
 import { Element } from "react-scroll";
 import Title from "./Title";
-import { Container } from "react-bootstrap";
-import ContactForm from "./ContactForm";
+import { Container, Row, Col } from "react-bootstrap";
+import { Icon } from "@iconify/react";
 
-// #region styled-components
 const StyledSection = styled.section`
   min-height: calc(100vh - var(--nav-height) - 2rem);
+  .contact-item {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+  .contact-icon {
+    font-size: 2rem;
+  }
 `;
-// #endregion
 
-// #region component
 const Contact = () => {
+  const [contactInfo, setContactInfo] = useState(null);
+
+  useEffect(() => {
+    fetch('/CV/CV.json')
+      .then(response => response.json())
+      .then(data => {
+        setContactInfo(data.personal_information);
+      })
+      .catch(error => console.error('Error loading contact info:', error));
+  }, []);
+
   return (
     <Element name={"Contact"} id="contact">
       <StyledSection className="d-flex flex-column justify-content-center">
@@ -22,12 +41,36 @@ const Contact = () => {
           <Title size={"h2"} text={"Contact"} />
         </Container>
         <Container>
-          <ContactForm />
+          {contactInfo && (
+            <Row className="justify-content-center">
+              <Col md={8} lg={6}>
+                <div className="contact-item">
+                  <Icon icon="mdi:email" className="contact-icon" />
+                  <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+                </div>
+                <div className="contact-item">
+                  <Icon icon="mdi:phone" className="contact-icon" />
+                  <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}</a>
+                </div>
+                <div className="contact-item">
+                  <Icon icon="mdi:map-marker" className="contact-icon" />
+                  <span>{contactInfo.address}</span>
+                </div>
+                <div className="contact-item">
+                  <Icon icon="mdi:linkedin" className="contact-icon" />
+                  <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                </div>
+                <div className="contact-item">
+                  <Icon icon="mdi:github" className="contact-icon" />
+                  <a href={contactInfo.github} target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+                </div>
+              </Col>
+            </Row>
+          )}
         </Container>
       </StyledSection>
     </Element>
   );
 };
-// #endregion
 
 export default Contact;
