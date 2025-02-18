@@ -13,7 +13,7 @@ const Skills = () => {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    fetch('/CV.json')
+    fetch('/CV/CV.json')
       .then(response => response.json())
       .then(data => {
         setSkills(data.aptitudes.map((skill, index) => ({
