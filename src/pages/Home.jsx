@@ -24,7 +24,7 @@ const Home = () => {
   // Reference CV data
   const [cvDataJSON, setCvDataJSON] = React.useState(null);
   
-  React.useEffect(() => {
+  React.useEffectaw(() => {
     fetch('/CV.json')
       .then(response => response.json())
       .then(data => {
