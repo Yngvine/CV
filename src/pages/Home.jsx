@@ -9,7 +9,7 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import BackToTop from "../components/BackToTop";
 // Config
-import { filteredProjects, moreInfo } from "../config";
+import { filteredProjects, moreInfo, dataCVUri } from "../config";
 // Utils
 import { updateTitle } from "../utils";
 
@@ -21,9 +21,12 @@ const Home = () => {
     updateTitle(`${userData.name} | Portfolio`);
   }, [userData]);
 
+  // get data from dataCVUri file
+  cvDataJSON = require(dataCVUri);
+
   return (
     <>
-      <Hero name={userData.name} />
+      <Hero name={cvDataJSON.personal_information.name}/>
       <main>
         <AboutMe
           avatar_url={userData.avatar_url}

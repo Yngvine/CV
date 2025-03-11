@@ -11,6 +11,9 @@ import HeroDark from "./images/hero-dark.jpg";
 // Projects Images (add your images to the images directory and import below)
 import Logo from "./images/logo.svg";
 
+export const dataCVUri = "public/CV.json";
+
+
 /* START HERE
  **************************************************************
   Add your GitHub username (string - "YourUsername") below.
