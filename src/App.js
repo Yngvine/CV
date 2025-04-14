@@ -23,26 +23,13 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
   const theme = useSelector(selectMode);
   const projects = useSelector(selectProjects);
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [cvData, setCvData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch('/CV.json')
-      .then(response => response.json())
-      .then(data => {
-        setCvData(data);
-        setIsLoading(false);
-      })
-      .catch(error => {
-        console.error('Error loading CV.json:', error);
-        setIsLoading(false);
-      });
-  }, []);
+  const [isLoading, setIsLoading] = React.useState(false);
+  import * as cvData from "./CV.json";
 
   // Set all projects state
   React.useEffect(() => {
-    if (cvData?.projects) {
-      const tempData = cvData.projects.map((project, index) => ({
+    if (cvData.projects) {
+      const tempData = Object.values(cvData.projects).flat().map((project, index) => ({
         id: index,
         name: project.title,
         description: project.description,
