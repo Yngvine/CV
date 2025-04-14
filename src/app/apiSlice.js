@@ -1,26 +1,22 @@
 // https://redux-toolkit.js.org/rtk-query/overview
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Config
-import { githubUsername } from "../config";
+//import { githubUsername } from "../config"; // Removed as GitHub API is no longer used
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://api.github.com" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "" }), // Base URL no longer needed
   endpoints: (builder) => ({
-    // https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#get-a-user
-    getUsers: builder.query({
-      query: () => `/users/${githubUsername}`,
-    }),
-    // https://docs.github.com/en/rest/users/social-accounts?apiVersion=2022-11-28#list-social-accounts-for-a-user
-    getSocials: builder.query({
-      query: () => `/users/${githubUsername}/social_accounts`,
-    }),
-    // https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user
-    getProjects: builder.query({
-      query: () => `/users/${githubUsername}/repos`,
-    }),
+    //All GitHub endpoints are removed
+
   }),
 });
 
-export const { useGetUsersQuery, useGetSocialsQuery, useGetProjectsQuery } =
-  apiSlice;
+export const getCVData = async () => {
+  const response = await fetch('/CV.json');
+  return response.json();
+};
+
+//The following lines are removed because they reference the removed endpoints
+//export const { useGetUsersQuery, useGetSocialsQuery, useGetProjectsQuery } =
+//  apiSlice;

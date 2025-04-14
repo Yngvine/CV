@@ -1,45 +1,36 @@
-import React from "react";
-// State
-import { useGetUsersQuery } from "../app/apiSlice";
-// Components
+
+import React, { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import BackToTop from "../components/BackToTop";
-// Config
-import { filteredProjects, moreInfo } from "../config";
-// Utils
+import { moreInfo } from "../config";
 import { updateTitle } from "../utils";
-
 import * as cvData from "../CV.json";
 
-// #region component
 const Home = () => {
-  const { data: userData } = useGetUsersQuery();
-
-  React.useEffect(() => {
-    updateTitle(`${userData.name} | Portfolio`);
-  }, [userData]);
+  useEffect(() => {
+    updateTitle(`${cvData.personal_information.name} | Portfolio`);
+  }, []);
 
   return (
     <>
-      <Hero name={cvData.personal_information.name}/>
+      <Hero name={cvData.personal_information.name} />
       <main>
         <AboutMe
-          avatar_url={userData.avatar_url}
-          bio={userData.bio}
+          avatar_url={`https://github.com/${cvData.personal_information.github.split('/').pop()}.png`}
+          bio={cvData.additional_info}
           moreInfo={moreInfo}
         />
         <Skills />
-        <Projects filteredProjects={filteredProjects} />
+        <Projects />
         <Contact />
       </main>
       <BackToTop />
     </>
   );
 };
-// #endregion
 
 export default Home;

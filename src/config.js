@@ -14,12 +14,6 @@ import Logo from "./images/logo.svg";
 export const dataCVUri = "./CV.json";
 
 
-/* START HERE
- **************************************************************
-  Add your GitHub username (string - "YourUsername") below.
-*/
-export const githubUsername = "Yngvine";
-
 // Navbar Logo image
 export const navLogo = null;
 
@@ -37,8 +31,7 @@ export { HeroDark as Dark };
  **************************************************************
   Add a second paragraph for the about me section.
 */
-export const moreInfo =
-  "I enjoy learning about technology and helping others use it to improve their lives and be more productive. I built this site with React, React Bootstrap, Redux, and the GitHub REST API.";
+export const moreInfo = "I enjoy learning about technology and helping others use it to improve their lives and be more productive. I built this site with React and React Bootstrap.";
 
 /* Skills
  ************************************************************** 
