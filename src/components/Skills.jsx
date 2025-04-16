@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectMode } from "../app/appSlice";
@@ -7,22 +6,21 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import Title from "./Title";
 import { resume } from "../config";
+import * as Data from "../CV.json";
 
 const Skills = () => {
   const theme = useSelector(selectMode);
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    fetch('/CV/CV.json')
-      .then(response => response.json())
-      .then(data => {
-        setSkills(data.aptitudes.map((skill, index) => ({
-          id: index + 1,
-          skill: <Icon icon={skill.icon} className="display-4" />,
-          name: `${skill.name} (${skill.level})`
-        })));
-      })
-      .catch(error => console.error('Error loading skills:', error));
+    console.log(Data.aptitudes);
+    setSkills(
+      Data.aptitudes.map((skill, index) => ({
+        id: index + 1,
+        skill: <Icon icon={skill.icon} className="display-4" />,
+        name: `${skill.name} (${skill.level})`,
+      })),
+    );  
   }, []);
 
   return (

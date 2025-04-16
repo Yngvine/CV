@@ -1,37 +1,26 @@
-
+// https://redux-toolkit.js.org/rtk-query/overview
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+// Config
+import { githubUsername } from "../config";
 
 export const apiSlice = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://api.github.com" }),
   endpoints: (builder) => ({
+    // https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#get-a-user
     getUsers: builder.query({
-      query: () => "/CV.json",
-      transformResponse: (response) => ({
-        name: response.personal_information.name,
-        bio: response.additional_info,
-        blog: response.personal_information.website,
-        html_url: response.personal_information.github
-      })
+      query: () => `/users/${githubUsername}`,
     }),
+    // https://docs.github.com/en/rest/users/social-accounts?apiVersion=2022-11-28#list-social-accounts-for-a-user
     getSocials: builder.query({
-      query: () => "/CV.json",
-      transformResponse: (response) => response.social_media.map(social => ({
-        provider: social.platform.toLowerCase(),
-        url: social.url
-      }))
+      query: () => `/users/${githubUsername}/social_accounts`,
     }),
+    // https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user
     getProjects: builder.query({
-      query: () => "/CV.json",
-      transformResponse: (response) => response.projects.map((project, index) => ({
-        id: index,
-        name: project.name,
-        description: project.description,
-        html_url: project.repository,
-        homepage: project.demo
-      }))
-    })
+      query: () => `/users/${githubUsername}/repos`,
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetSocialsQuery, useGetProjectsQuery } = apiSlice;
+export const { useGetUsersQuery, useGetSocialsQuery, useGetProjectsQuery } =
+  apiSlice;
