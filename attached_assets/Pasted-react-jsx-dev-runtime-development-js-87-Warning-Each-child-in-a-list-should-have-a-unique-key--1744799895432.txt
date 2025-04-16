@@ -1,0 +1,27 @@
+react-jsx-dev-runtime.development.js:87 
+ Warning: Each child in a list should have a unique "key" prop.
+
+Check the render method of `ProjectCard`. See https://reactjs.org/link/warning-keys for more information.
+    at https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:24103:5
+    at ProjectCard (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:2542:5)
+    at div
+    at https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:24382:8
+    at div
+    at https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:26114:5
+    at div
+    at https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:24542:5
+    at section
+    at div
+    at ElementWrapper (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:56590:5)
+    at Element (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:57461:7)
+    at Projects (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:2722:74)
+    at main
+    at Home (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:4483:70)
+    at RenderedRoute (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:55447:5)
+    at Routes (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:56181:5)
+    at ot (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:64974:56)
+    at Router (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:56115:15)
+    at HashRouter (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:54056:5)
+    at ErrorBoundary (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:52401:5)
+    at App (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:230:5)
+    at Provider (https://a3736e3c-bc01-4371-8868-daeebb2797c8-00-2jdl92vr7qyfd.riker.replit.dev/CV/static/js/bundle.js:78106:5)

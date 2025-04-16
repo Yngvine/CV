@@ -25,19 +25,19 @@ const Projects = () => {
   let content;
 
   useEffect(() => {
-    setProjects(Data.projects.personal.map((project, index) => ({
+    setProjects(Data.projects.academic.map((project, index) => ({
       id: index + 1,
       name: project.title,
       description: project.description,
       urls: project.links,
     })));
-    setMainProjects(Data.projects.personal.map((project, index) => ({
+    setMainProjects(Data.projects.academic.slice(0,3).map((project, index) => ({
       id: index + 1,
       name: project.title,
       description: project.description,
       urls: project.links,
     })));
-  })
+  }, []);
 
   if (isLoading) {
     content = (
@@ -57,6 +57,7 @@ const Projects = () => {
           <>
             <Row xs={1} md={2} lg={3} className="g-4 justify-content-center">
               {mainProjects.map((element) => {
+                console.log(element.id);
                 return (
                   <Col key={element.id}>
                     <ProjectCard
