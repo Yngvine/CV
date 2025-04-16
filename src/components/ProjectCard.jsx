@@ -15,6 +15,7 @@ const StyledCard = styled.div`
   .card {
     height: var(--card-height);
     border: var(--border);
+    border-radius: 0;
     transition: all 0.2s ease-in-out;
     background: ${({ theme }) =>
       theme.name === "light" ? "" : "var(--bs-gray)"};
@@ -23,14 +24,18 @@ const StyledCard = styled.div`
         ? "0 3px 10px rgb(0 0 0 / 0.2)"
         : "0 3px 10px rgb(255 255 255 / 0.2)"};
 
+    .card-title {
+      font-size: 1.5rem;
+    }
+
     .card-img-top {
-      height: 50%;
+      height: 40%;
       object-fit: contain;
     }
 
     .card-link {
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: 1rem;
 
       &:hover {
         color: ${({ theme }) =>
@@ -90,13 +95,12 @@ const ProjectCard = ({ demo, description, image, name, urls }) => {
           ) : null}
         </Card.Body>
         <Card.Footer className="text-center">
-          { urls.map((url, index) => (
+          {urls.map((url, index) => (
             <Card.Link key={`resource-${index}`} href={url}>
               {"View Resource "}
               <Icon icon="icomoon-free:github" />
             </Card.Link>
           ))}
-          
         </Card.Footer>
       </Card>
     </StyledCard>

@@ -108,236 +108,149 @@
     "Inglés": "C2",
     "Ruso": "Good working knowledge"
   },
-  "projects": {
-    "academic": [
-      {
-        "title": "Amazon web scraping and predictor training",
-        "year": 2022,
-        "description": "A script was designed to collect comments from various Amazon products. Pagination and request headers (e.g., user-agent) were handled to bypass page controls. The collected data was processed using embeddings and then used to train models to predict review scores based on comment text.",
-        "skills": [
-          "web scraping",
-          "handling headers in web requests",
-          "embedding translation and use",
-          "machine learning model training"
-        ],
-        "links": [
-          "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Review_classification"
-        ]
-      },
-      {
-        "title": "Dataset regularization and machine learning model comparison",
-        "year": 2023,
-        "description": "An incomplete dataset containing economic information and bankruptcy labels was processed by filling missing values, identifying key attributes, and balancing class ratios. Multiple models were then trained and evaluated on the processed dataset.",
-        "skills": [
-          "defective dataset analysis",
-          "data treatment",
-          "machine learning model training"
-        ],
-        "links": [
-          "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Dataset_regularization",
-          "https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction"
-        ]
-      },
-      {
-        "title": "Image processing and classification",
-        "year": 2022,
-        "description": "This project involved processing and vectorizing an image dataset of dogs and cats. Three different encoding strategies were implemented and compared by training machine learning models.",
-        "skills": [
-          "image processing",
-          "vectorization",
-          "machine learning model training"
-        ],
-        "links": [
-          "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Image_classification"
-        ]
-      },
-      {
-        "title": "Dataset analysis and model training",
-        "year": 2022,
-        "description": "A dataset was selected and analyzed to study the relationship between attributes and class labels. Several models were then trained and evaluated based on the findings.",
-        "skills": [
-          "dataset analysis",
-          "machine learning model training"
-        ],
-        "links": [
-          "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Dataset_study",
-          "https://www.kaggle.com/datasets/muratkokludataset/acoustic-extinguisher-fire-dataset"
-        ]
-      },
-      {
-        "title": "Cell conquest/tower defense game",
-        "year": 2022,
-        "description": "A real-time multiplayer game developed in Java where players, each assigned a random country, compete by expanding their territory. The game generates units over time with the objective of being the last player standing.",
-        "skills": [
-          "Java programming",
-          "asynchronous event handling",
-          "network communication",
-          "interface implementation"
-        ],
-        "links": [
-          "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Cell_conquest_game"
-        ]
-      },
-      {
-        "title": "Madrid bus lines web",
-        "year": 2023,
-        "description": "A web development project that uses the public EMT API of Madrid to visualize public transport lines via Leaflet. Registered users can view bus stops, check routes, and download information as CSV or PDF. (Note: The project code was lost due to server resets by UPNA.)",
-        "skills": [
-          "HTML",
-          "JavaScript",
-          "PHP (without a framework)",
-          "API communication",
-          "phpMyAdmin",
-          "user access control",
-          "file generation and download",
-          "Postman"
-        ],
-        "links": [
-          "https://apidocs.emtmadrid.es"
-        ]
-      },
-      {
-        "title": "Art sales website",
-        "year": 2023,
-        "description": "A sales website developed from scratch featuring a main page with pagination and filters. Registered users can add items to their cart and perform a mock purchase, while admin users have a dedicated view for inventory management and report downloads. The project was also used to practice agile Scrum techniques.",
-        "skills": [
-          "Xampp",
-          "HTML",
-          "JavaScript",
-          "PHP",
-          "MySQL",
-          "Scrum",
-          "Git/GitLab",
-          "user access control",
-          "inventory management",
-          "file generation and download"
-        ],
-        "links": [
-          "https://github.com/Yngvine/AIshoppingweb"
-        ]
-      }
-    ],
-    "personal": [
-      {
-        "title": "Translation of Qt examples from C++ to Python",
-        "year": 2022,
-        "description": "A self-initiated project to learn PySide (a Python wrapper for Qt) by translating C++ examples. Included the implementation of a simple calculator interface.",
-        "skills": [
-          "Python/C++ programming",
-          "code translation",
-          "PySide",
-          "PyQt",
-          "Qt interface development"
-        ],
-        "links": [
-          "https://github.com/Yngvine/QTSvg_Example_Python",
-          "https://github.com/Yngvine/Calculator"
-        ]
-      },
-      {
-        "title": "Project Caelus",
-        "year": 2020,
-        "description": "The group project for CanSat Navarra 2020 where participants designed a mini satellite (soda can size) equipped with sensors, a transmitter, and a parachute-based descent control system.",
-        "skills": [
-          "3D modeling (FreeCad)",
-          "3D printing",
-          "Arduino",
-          "basic aerodynamics"
-        ],
-        "links": [
-          "https://www.instagram.com/caelusproject/?hl=es"
-        ]
-      }
-    ],
-    "others": [
-      {
-        "title": "Collaboration grant/Thesis",
-        "years": "2022-2024",
-        "description": "A project that began as a collaboration grant with UPNA and evolved into a full thesis. It involved creating a physical and reactive interface (a sand-filled box with a distance sensor and projector) to interact with generative image models. The system used network-based communication to work with Stable Diffusion and tested methodologies such as Control-Net and LoRA.",
-        "skills": [
-          "AI generative technologies",
-          "switch-based communication",
-          "Azure Kinect framework",
-          "3D modeling (Blender)",
-          "image processing"
-        ],
-        "links": [
-          "https://github.com/Yngvine/Small-projects/tree/21e1e4aa40bea68cc2d3b71e2cb50242217588cf/Sand_Difussion"
-        ]
-      },
-      {
-        "title": "Back-end/front-end development + Kronis APIs",
-        "years": "2023-2024",
-        "description": "During a curricular internship (extended as freelance work), contributed to the Kronis web application by writing tests, refactoring code, implementing new features, developing front-end components with Django, and creating an API to facilitate a migration to a React interface.",
-        "skills": [
-          "Django models/views",
-          "Django migrations",
-          "Postman",
-          "Scrum/Kanban",
-          "Ajax requests",
-          "CSS/XPATH selectors",
-          "Git/GitHub",
-          "Pycharm",
-          "custom API implementation",
-          "Selenium"
-        ],
-        "links": [
-          "https://kronis.app"
-        ]
-      },
-      {
-        "title": "RoboArm",
-        "year": 2023,
-        "description": "A project to design and build a physical robotic arm connected to an Arduino. The arm’s position was continuously recorded and transmitted to a computer where a simulation displayed its movement. A button allowed the user to perform actions such as lifting and moving a cube with basic collision and gravity physics.",
-        "skills": [
-          "piece design",
-          "laser cutting",
-          "Processing programming",
-          "Arduino",
-          "electronic component assembly"
-        ],
-        "links": [
-          "https://github.com/Ninjalice/ROBOARM"
-        ]
-      }
-    ],
-    "in_progress": [
-      {
-        "title": "Numismatics project",
-        "description": "A personal project exploring advanced 3D design and 3D printing to create an alternative preservation system for numismatic items, with tools to aid scalability and replicability.",
-        "skills": [
-          "Python",
-          "PySide6",
-          "VTK",
-          "CadQuery"
-        ],
-        "links": [
-          "https://github.com/Yngvine/CoinChipApp"
-        ]
-      },
-      {
-        "title": "Mountain Shelters Website",
-        "description": "A collaborative project to build a website centralizing information about mountain shelters. The site displays registered shelters and allows user contributions. It began as an introductory project for .NET technologies, featuring an ASP.NET web API and a React front end, though it is not currently deployed.",
-        "skills": [
-          ".NET",
-          "ASP.NET",
-          "Flask",
-          "React"
-        ],
-        "links": [
-          "https://github.com/Ninjalice/BE-OpenCabins",
-          "https://github.com/Ninjalice/FE-OpenCabins"
-        ]
-      }
-    ],
-    "future": {
-      "personal_website": "Create a website to showcase the resume and projects in an accessible format.",
-      "further_studies": {
-        "description": "Pursue an AI Master’s degree offered by UPNA for the 2025-2026 academic year. The program is a one-year master's with a sequential curriculum aimed at providing essential tools for working with new AI technologies, particularly large-scale deep learning models.",
-        "institution": "UPNA",
-        "duration": "2025-2026"
-      }
+  "projects": [
+    {
+      "title": "Amazon web scraping and predictor training",
+      "year": "2022",
+      "description": "A script was designed to collect comments from various Amazon products. Translations were embedded for comments in different languages, followed by a model training phase that predicted the star rating from comment text.",
+      "skills": ["web scraping", "handling headers in web requests", "embedding translation and use", "machine learning model training"],
+      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Review_classification"],
+      "type": "academic",
+      "status": "finished"
+    },
+    {
+      "title": "Dataset regularization and machine learning model comparison",
+      "year": "2023",
+      "description": "An incomplete dataset containing economic information and bankruptcy labels was cleaned and pre-processed before training several models to find the most suitable classification algorithm.",
+      "skills": ["defective dataset analysis", "data treatment", "machine learning model training"],
+      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Dataset_regularization", "https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction"],
+      "type": "academic",
+      "status": "finished"
+    },
+    {
+      "title": "Image processing and classification",
+      "year": "2022",
+      "description": "This project involved processing and vectorizing an image dataset of dogs and cats. The goal was to classify them using image features and machine learning techniques.",
+      "skills": ["image processing", "vectorization", "machine learning model training"],
+      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Image_classification"],
+      "type": "academic",
+      "status": "finished"
+    },
+    {
+      "title": "Dataset analysis and model training",
+      "year": "2022",
+      "description": "A dataset was selected and analyzed to study the relationship between attributes and class labels. A variety of machine learning models were trained and evaluated.",
+      "skills": ["dataset analysis", "machine learning model training"],
+      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Dataset_study", "https://www.kaggle.com/datasets/muratkokludataset/acoustic-extinguisher-fire-dataset"],
+      "type": "academic",
+      "status": "finished"
+    },
+    {
+      "title": "Cell conquest/tower defense game",
+      "year": "2022",
+      "description": "A real-time multiplayer game developed in Java where players compete by expanding their territory and attacking others using programmed cells. Networking and event handling were central to gameplay.",
+      "skills": ["Java programming", "asynchronous event handling", "network communication", "interface implementation"],
+      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Cell_conquest_game"],
+      "type": "academic",
+      "status": "finished"
+    },
+    {
+      "title": "Madrid bus lines web",
+      "year": "2023",
+      "description": "A web project using the EMT API of Madrid to visualize public transport lines. Implemented using vanilla PHP and JS with a MySQL database. Admin tools and user login included.",
+      "skills": ["HTML", "JavaScript", "PHP (without a framework)", "API communication", "phpMyAdmin", "user access control", "file generation and download", "Postman"],
+      "links": ["https://apidocs.emtmadrid.es"],
+      "type": "academic",
+      "status": "finished"
+    },
+    {
+      "title": "Art sales website",
+      "year": "2023",
+      "description": "A sales site built from scratch with pagination, filters, mock purchases, admin features, and login functionality. Built with PHP, JS, and MySQL using XAMPP.",
+      "skills": ["Xampp", "HTML", "JavaScript", "PHP", "MySQL", "Scrum", "Git/GitLab", "user access control", "inventory management", "file generation and download"],
+      "links": ["https://github.com/Yngvine/AIshoppingweb"],
+      "type": "academic",
+      "status": "finished"
+    },
+    {
+      "title": "Translation of Qt examples from C++ to Python",
+      "year": "2022",
+      "description": "A personal project to learn PySide by translating Qt C++ examples to Python. It helped understand GUI layout design, signals/slots, and SVG rendering.",
+      "skills": ["Python/C++ programming", "code translation", "PySide", "PyQt", "Qt interface development"],
+      "links": ["https://github.com/Yngvine/QTSvg_Example_Python", "https://github.com/Yngvine/Calculator"],
+      "type": "personal",
+      "status": "finished"
+    },
+    {
+      "title": "Project Caelus",
+      "year": "2020",
+      "description": "A CanSat Navarra project involving a soda can-sized satellite with sensors and a parachute. Worked on 3D design, Arduino integration, and mechanical components.",
+      "skills": ["3D modeling (FreeCad)", "3D printing", "Arduino", "basic aerodynamics"],
+      "links": ["https://www.instagram.com/caelusproject/?hl=es"],
+      "type": "personal",
+      "status": "finished"
+    },
+    {
+      "title": "Collaboration grant/Thesis",
+      "year": "2022–2024",
+      "description": "Started as a collaboration grant and evolved into a thesis with a reactive sand-based interface for image generation. The system uses a Kinect camera, switch-based communication, and AI models to interpret sand deformation and generate matching images.",
+      "skills": ["AI generative technologies", "switch-based communication", "Azure Kinect framework", "3D modeling (Blender)", "image processing"],
+      "links": ["https://github.com/Yngvine/Small-projects/tree/21e1e4aa40bea68cc2d3b71e2cb50242217588cf/Sand_Difussion"],
+      "type": "other",
+      "status": "finished"
+    },
+    {
+      "title": "Back-end/front-end development + Kronis APIs",
+      "year": "2023–2024",
+      "description": "Work for the Kronis web app including API creation, Django backend, frontend refactors, and migration to React. Tasks included database modeling, route creation, and UI improvements.",
+      "skills": ["Django models/views", "Django migrations", "Postman", "Scrum/Kanban", "Ajax requests", "CSS/XPATH selectors", "Git/GitHub", "Pycharm", "custom API implementation", "Selenium"],
+      "links": ["https://kronis.app"],
+      "type": "other",
+      "status": "finished"
+    },
+    {
+      "title": "RoboArm",
+      "year": "2023",
+      "description": "A robotic arm connected to an Arduino and synced with a PC-based simulation to lift and move cubes. Involved mechanical and software integration, from design to electronics.",
+      "skills": ["piece design", "laser cutting", "Processing programming", "Arduino", "electronic component assembly"],
+      "links": ["https://github.com/Ninjalice/ROBOARM"],
+      "type": "other",
+      "status": "finished"
+    },
+    {
+      "title": "Numismatics project",
+      "year": "2024",
+      "description": "3D printing project aimed at preserving numismatic items with replicable, scalable tools and designs. Developed a desktop app for viewing and processing 3D models using CadQuery and VTK.",
+      "skills": ["Python", "PySide6", "VTK", "CadQuery"],
+      "links": ["https://github.com/Yngvine/CoinChipApp"],
+      "type": "personal",
+      "status": "in progress"
+    },
+    {
+      "title": "Mountain Shelters Website",
+      "year": "2024",
+      "description": "Collaborative .NET + React web project to map and manage information about mountain shelters. Used EF, SQLite, dynamic filters, and mapping features.",
+      "skills": [".NET", "ASP.NET", "Flask", "React"],
+      "links": ["https://github.com/Ninjalice/BE-OpenCabins", "https://github.com/Ninjalice/FE-OpenCabins"],
+      "type": "personal",
+      "status": "in progress"
+    },
+    {
+      "title": "Personal Website",
+      "year": "2025",
+      "description": "Create a website to showcase the resume and projects in an accessible format.",
+      "type": "personal",
+      "status": "future"
+    },
+    {
+      "title": "Further Studies: AI Master",
+      "year": "2025–2026",
+      "description": "Pursue an AI Master’s degree offered by UPNA for the 2025-2026 academic year to deepen knowledge of machine learning, AI systems, and ethical application.",
+      "institution": "UPNA",
+      "type": "academic",
+      "status": "future"
     }
-  },
+  ]
+,
   "additional_info": "This document is a condensed collection of various projects that showcase knowledge, experience, and future development ideas."
 }
