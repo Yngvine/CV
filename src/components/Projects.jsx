@@ -57,7 +57,6 @@ const Projects = () => {
           <>
             <Row xs={1} md={2} lg={3} className="g-4 justify-content-center">
               {mainProjects.map((element) => {
-                console.log(element.id);
                 return (
                   <Col key={element.id}>
                     <ProjectCard
