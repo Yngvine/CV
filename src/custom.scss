@@ -4,3 +4,34 @@
 $blue: #61dbfb;
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
+
+// Custom carousel styling
+.custom-carousel {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: var(--bs-dark);
+    border-radius: 50%;
+    padding: 1rem;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    background-color: var(--bs-dark);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+  }
+}
+
+[data-bs-theme="dark"] .custom-carousel {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: var(--bs-light);
+  }
+
+  .carousel-indicators [data-bs-target] {
+    background-color: var(--bs-light);
+  }
+}
+
+

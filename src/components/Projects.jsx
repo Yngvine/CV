@@ -51,8 +51,10 @@ const Projects = () => {
         {mainProjects.length !== 0 && (
           <>
             <Carousel 
-              className="mx-auto" 
-              style={{maxWidth: '800px'}}
+              className="mx-auto custom-carousel" 
+              style={{
+                maxWidth: '800px'
+              }}
               interval={3000}
               indicators={true}
             >
