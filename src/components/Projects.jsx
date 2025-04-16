@@ -1,17 +1,22 @@
-
 import React, { useEffect, useState } from "react";
+// State
 import { useSelector } from "react-redux";
 import { selectMode } from "../app/appSlice";
+import { selectProjects, selectMainProjects } from "../app/projectsSlice";
 import { useGetProjectsQuery } from "../app/apiSlice";
+// Router
 import { Link } from "react-router-dom";
+// Icons
 import { Icon } from "@iconify/react";
+// Components
 import { Element } from "react-scroll";
-import { Button, Container, Carousel } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Loading from "./Loading";
 import Title from "./Title";
 import ProjectCard from "./ProjectCard";
-import * as Data from "../CV.json";
+import * as Data from "../CV.json"
 
+// #region component
 const Projects = () => {
   const theme = useSelector(selectMode);
   const [projects, setProjects] = useState([]);
@@ -50,17 +55,11 @@ const Projects = () => {
         )}
         {mainProjects.length !== 0 && (
           <>
-            <Carousel 
-              className="mx-auto custom-carousel" 
-              style={{
-                maxWidth: '800px'
-              }}
-              interval={3000}
-              indicators={true}
-            >
-              {mainProjects.map((element) => (
-                <Carousel.Item key={element.id}>
-                  <div className="d-flex justify-content-center p-3">
+            <Row xs={1} md={2} lg={3} className="g-4 justify-content-center">
+              {mainProjects.map((element) => {
+                console.log(element.id);
+                return (
+                  <Col key={element.id}>
                     <ProjectCard
                       image={element.image}
                       name={element.name}
@@ -68,16 +67,18 @@ const Projects = () => {
                       urls={element.urls}
                       demo={element.homepage}
                     />
-                  </div>
-                </Carousel.Item>
-              ))}
-            </Carousel>
+                  </Col>
+                );
+              })}
+            </Row>
             {projects.length > 3 && (
               <Container className="text-center mt-5">
                 <Link to="/All-Projects">
                   <Button
                     size="lg"
-                    variant={theme === "light" ? "outline-dark" : "outline-light"}
+                    variant={
+                      theme === "light" ? "outline-dark" : "outline-light"
+                    }
                   >
                     All <Icon icon="icomoon-free:github" /> Projects
                   </Button>
@@ -109,5 +110,6 @@ const Projects = () => {
     </Element>
   );
 };
+// #endregion
 
 export default Projects;

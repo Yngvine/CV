@@ -13,6 +13,7 @@ const Skills = () => {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
+    console.log(Data.aptitudes);
     setSkills(
       Data.aptitudes.map((skill, index) => ({
         id: index + 1,
