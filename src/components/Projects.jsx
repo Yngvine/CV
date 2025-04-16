@@ -55,7 +55,7 @@ const Projects = () => {
         )}
         {mainProjects.length !== 0 && (
           <>
-            <Row xs={1} md={2} lg={3} className="g-4 justify-content-center">
+            <Row xs={1} md={1} lg={2} className="g-4 justify-content-center">
               {mainProjects.map((element) => {
                 console.log(element.id);
                 return (
