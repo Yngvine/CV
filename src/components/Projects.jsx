@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // State
 import { useSelector } from "react-redux";
 import { selectMode } from "../app/appSlice";
@@ -14,14 +14,30 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Loading from "./Loading";
 import Title from "./Title";
 import ProjectCard from "./ProjectCard";
+import * as Data from "../CV.json"
 
 // #region component
 const Projects = () => {
   const theme = useSelector(selectMode);
-  const projects = useSelector(selectProjects);
-  const mainProjects = useSelector(selectMainProjects);
+  const [projects, setProjects] = useState([]);
+  const [mainProjects, setMainProjects] = useState([]);
   const { isLoading, isSuccess, isError, error } = useGetProjectsQuery();
   let content;
+
+  useEffect(() => {
+    setProjects(Data.projects.personal.map((project, index) => ({
+      id: index + 1,
+      name: project.title,
+      description: project.description,
+      urls: project.links,
+    })));
+    setMainProjects(Data.projects.personal.map((project, index) => ({
+      id: index + 1,
+      name: project.title,
+      description: project.description,
+      urls: project.links,
+    })));
+  })
 
   if (isLoading) {
     content = (
@@ -47,7 +63,7 @@ const Projects = () => {
                       image={element.image}
                       name={element.name}
                       description={element.description}
-                      url={element.html_url}
+                      urls={element.urls}
                       demo={element.homepage}
                     />
                   </Col>

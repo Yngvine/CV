@@ -192,7 +192,7 @@
           "file generation and download",
           "Postman"
         ],
-        "api_link": "https://apidocs.emtmadrid.es"
+        "links": "https://apidocs.emtmadrid.es"
       },
       {
         "title": "Art sales website",
@@ -319,6 +319,7 @@
         "skills": [
           ".NET",
           "ASP.NET",
+          "Flask",
           "React"
         ],
         "links": [

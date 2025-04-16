@@ -66,10 +66,10 @@ const propTypes = {
   description: PropTypes.string,
   image: PropTypes.node,
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  urls: PropTypes.array.isRequired,
 };
 
-const ProjectCard = ({ demo, description, image, name, url }) => {
+const ProjectCard = ({ demo, description, image, name, urls }) => {
   return (
     <StyledCard>
       <Card>
@@ -90,10 +90,13 @@ const ProjectCard = ({ demo, description, image, name, url }) => {
           ) : null}
         </Card.Body>
         <Card.Footer className="text-center">
-          <Card.Link href={url}>
-            {"View on GitHub "}
-            <Icon icon="icomoon-free:github" />
-          </Card.Link>
+          { urls.map(url => (
+            <Card.Link href={url}>
+              {"View Resource "}
+              <Icon icon="icomoon-free:github" />
+            </Card.Link>
+          ))}
+          
         </Card.Footer>
       </Card>
     </StyledCard>
