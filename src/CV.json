@@ -192,7 +192,9 @@
           "file generation and download",
           "Postman"
         ],
-        "links": "https://apidocs.emtmadrid.es"
+        "links": [
+          "https://apidocs.emtmadrid.es"
+        ]
       },
       {
         "title": "Art sales website",

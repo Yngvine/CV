@@ -31,7 +31,7 @@ const Projects = () => {
       description: project.description,
       urls: project.links,
     })));
-    setMainProjects(Data.projects.academic.slice(0,3).map((project, index) => ({
+    setMainProjects(Data.projects.academic.slice(0, 6).map((project, index) => ({
       id: index + 1,
       name: project.title,
       description: project.description,

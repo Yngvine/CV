@@ -11,7 +11,7 @@ Variables
   --transition: all 0.3s linear;
   --nav-height: 55px;
   --min-footer-height: 11vh;
-  --card-height: 29rem;
+  --card-height: 15rem;
 }
 
 /*
