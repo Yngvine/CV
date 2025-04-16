@@ -90,8 +90,8 @@ const ProjectCard = ({ demo, description, image, name, urls }) => {
           ) : null}
         </Card.Body>
         <Card.Footer className="text-center">
-          { urls.map(url => (
-            <Card.Link href={url}>
+          { urls.map((url, index) => (
+            <Card.Link key={`resource-${index}`} href={url}>
               {"View Resource "}
               <Icon icon="icomoon-free:github" />
             </Card.Link>
