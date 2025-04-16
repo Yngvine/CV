@@ -61,6 +61,15 @@ const StyledCard = styled.div`
     &:hover {
       transform: scale(1.03);
     }
+    .card-text {
+      text-decoration: none;
+      font-size: 1rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
   }
 `;
 // #endregion
