@@ -34,7 +34,7 @@ const Projects = () => {
     setMainProjects(Data.projects.map((project, index) => ({
       id: index + 1,
       name: project.title,
-      image: project.image,
+      image: project.image ? require(`../${project.image}`) : null,
       description: project.description,
       urls: project.links,
     })));
