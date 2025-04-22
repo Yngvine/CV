@@ -29,8 +29,15 @@ const StyledCard = styled.div`
     }
 
     .card-img-top {
-      height: 40%;
+      height: 50%;
       object-fit: contain;
+    }
+
+    .card-body {
+      height: 50%;
+      object-fit: contain;
+      overflow: visible;
+      text-overflow: ellipsis;
     }
 
     .card-link {
@@ -80,7 +87,7 @@ const propTypes = {
   description: PropTypes.string,
   image: PropTypes.node,
   name: PropTypes.string.isRequired,
-  urls: PropTypes.array.isRequired,
+  urls: PropTypes.array,
 };
 
 const ProjectCard = ({ demo, description, image, name, urls }) => {
@@ -93,7 +100,7 @@ const ProjectCard = ({ demo, description, image, name, urls }) => {
           alt={name}
           className="mx-auto"
         />
-        <Card.Body className="overflow-auto text-center">
+        <Card.Body className="text-center">
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description}</Card.Text>
           {demo !== (undefined && null && "") ? (
@@ -104,12 +111,12 @@ const ProjectCard = ({ demo, description, image, name, urls }) => {
           ) : null}
         </Card.Body>
         <Card.Footer className="text-center">
-          {urls.map((url, index) => (
+          {urls ? urls.map((url, index) => (
             <Card.Link key={`resource-${index}`} href={url}>
               {"View Resource "}
               <Icon icon="icomoon-free:github" />
             </Card.Link>
-          ))}
+          )): null}
         </Card.Footer>
       </Card>
     </StyledCard>

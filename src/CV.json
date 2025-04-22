@@ -111,6 +111,7 @@
   "projects": [
     {
       "title": "Amazon web scraping and predictor training",
+      "image": "../images/template.jpg",
       "year": "2022",
       "description": "A script was designed to collect comments from various Amazon products. Translations were embedded for comments in different languages, followed by a model training phase that predicted the star rating from comment text.",
       "skills": ["web scraping", "handling headers in web requests", "embedding translation and use", "machine learning model training"],
