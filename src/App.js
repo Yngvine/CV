@@ -148,6 +148,7 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/All-Projects" element={<AllProjects />} />
+          <Route path="/project/:id" element={<ProjectView />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer mode={footerTheme} />

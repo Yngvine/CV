@@ -9,6 +9,7 @@ import { Icon } from "@iconify/react";
 import GH from "../images/GH.svg";
 // Components
 import { Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 // #region styled-components
 const StyledCard = styled.div`
@@ -98,6 +99,7 @@ const StyledCard = styled.div`
 
     &:hover {
       transform: scale(1.03);
+      cursor: pointer;
     }
 
   }
@@ -115,10 +117,11 @@ const propTypes = {
   urls: PropTypes.array,
 };
 
-const ProjectCard = ({ demo, description, image, name, period, status, }) => {
+const ProjectCard = ({ demo, description, image, name, period, status, id }) => {
+  const navigate = useNavigate();
   return (
     <StyledCard>
-      <Card>
+      <Card onClick={() => navigate(`/project/${id}`)}>
         <Card.Img
           variant="top"
           src={image ? image : GH}
