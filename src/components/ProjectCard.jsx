@@ -30,7 +30,9 @@ const StyledCard = styled.div`
 
     .card-img-top {
       width: 100%;
-      object-fit: hidden
+      object-fit: cover;
+      max-height: 50%;
+      display: block;
     }
 
     .card-body {
