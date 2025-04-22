@@ -62,7 +62,7 @@ const ProjectView = () => {
                 <Carousel.Item key={index}>
                   <img
                     className="d-block w-100"
-                    src={require(`../images/${image}`)}
+                    src={require(`../${image}`)}
                     alt={`Slide ${index + 1}`}
                   />
                 </Carousel.Item>
