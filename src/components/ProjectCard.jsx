@@ -31,8 +31,11 @@ const StyledCard = styled.div`
     .card-img-top {
       width: 100%;
       object-fit: cover;
-      max-height: 50%;
+      max-height: 100%;
       display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .card-body {
@@ -40,6 +43,12 @@ const StyledCard = styled.div`
       display: flex;
       flex-direction: column;
       min-height: 0;
+      position: relative;
+      background: ${({ theme }) =>
+        theme.name === "light"
+          ? "rgba(255, 255, 255, 0.85)"
+          : "rgba(33, 37, 41, 0.85)"};
+      z-index: 1;
       
       .card-text {
         width: 100%;
@@ -68,6 +77,7 @@ const StyledCard = styled.div`
       border-radius: 0;
       background: ${({ theme }) =>
         theme.name === "light" ? "" : "var(--bs-gray-dark)"};
+      z-index: 1;
 
       .card-link {
         color: ${({ theme }) =>
