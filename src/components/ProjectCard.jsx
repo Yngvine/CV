@@ -30,25 +30,17 @@ const StyledCard = styled.div`
 
     .card-img-top {
       width: 100%;
-      height: 100%;
       object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
+      max-height: 50%;
+      display: block;
     }
 
     .card-body {
-      height: 100%;
+      height: 50%;
       display: flex;
       flex-direction: column;
       min-height: 0;
-      position: relative;
-      background: ${({ theme }) =>
-        theme.name === "light"
-          ? "rgba(255, 255, 255, 0.85)"
-          : "rgba(33, 37, 41, 0.85)"};
-      z-index: 1;
-
+      
       .card-text {
         width: 100%;
         overflow: hidden;
@@ -90,7 +82,7 @@ const StyledCard = styled.div`
     &:hover {
       transform: scale(1.03);
     }
-
+    
   }
 `;
 // #endregion
