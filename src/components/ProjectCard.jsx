@@ -30,7 +30,7 @@ const StyledCard = styled.div`
 
     .card-img-top {
       width: 100%;
-      overflow: hidden;
+      object-fit: hidden
     }
 
     .card-body {
