@@ -14,7 +14,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Loading from "./Loading";
 import Title from "./Title";
 import ProjectCard from "./ProjectCard";
-import * as Data from "../CV.json"
+import Data from "../CV.json"
 
 // #region component
 const Projects = () => {

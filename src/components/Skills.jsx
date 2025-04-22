@@ -6,7 +6,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import Title from "./Title";
 import { resume } from "../config";
-import * as Data from "../CV.json";
+import Data from "../CV.json";
 
 const Skills = () => {
   const theme = useSelector(selectMode);

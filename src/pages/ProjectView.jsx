@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Carousel, Container, Row, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
-import * as Data from "../CV.json";
+import Data from "../CV.json";
 
 const StyledSection = styled.section`
   .carousel {
