@@ -29,15 +29,26 @@ const StyledCard = styled.div`
     }
 
     .card-img-top {
-      height: 50%;
-      object-fit: contain;
+      width: 100%;
+      overflow: hidden;
     }
 
     .card-body {
       height: 50%;
-      object-fit: contain;
-      overflow: visible;
-      text-overflow: ellipsis;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      
+      .card-text {
+        width: 100%;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        max-height: calc(1.2em * 3);
+        padding-bottom: 0.25rem;
+        line-height: 1.2em;
+      }
     }
 
     .card-link {
@@ -52,6 +63,7 @@ const StyledCard = styled.div`
 
     .card-footer {
       border-top: var(--border);
+      border-radius: 0;
       background: ${({ theme }) =>
         theme.name === "light" ? "" : "var(--bs-gray-dark)"};
 
@@ -68,15 +80,7 @@ const StyledCard = styled.div`
     &:hover {
       transform: scale(1.03);
     }
-    .card-text {
-      text-decoration: none;
-      font-size: 1rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-    }
+    
   }
 `;
 // #endregion
