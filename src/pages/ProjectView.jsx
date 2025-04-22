@@ -49,6 +49,7 @@ const StyledSection = styled.section`
 
 const ProjectView = () => {
   const { id } = useParams();
+  console.log(id);
   const project = Data.projects[parseInt(id) - 1];
 
   return (
@@ -61,7 +62,7 @@ const ProjectView = () => {
                 <Carousel.Item key={index}>
                   <img
                     className="d-block w-100"
-                    src={require(`../images/${image}`)}
+                    src={require(`../src/images/${image}`)}
                     alt={`Slide ${index + 1}`}
                   />
                 </Carousel.Item>

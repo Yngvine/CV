@@ -16,6 +16,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 // Pages
 import Home from "./pages/Home";
 import AllProjects from "./pages/AllProjects";
+import ProjectView from "./pages/ProjectView";
 import NotFound from "./pages/NotFound";
 // Components
 import { ErrorBoundary } from "react-error-boundary";
@@ -39,7 +40,7 @@ const propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       image: PropTypes.node.isRequired,
-    })
+    }),
   ),
 };
 
@@ -95,7 +96,7 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
         filteredProjects.length !== 0
       ) {
         const tempArray = projects.filter((obj) =>
-          filteredProjects.includes(obj.name)
+          filteredProjects.includes(obj.name),
         );
         tempArray.length !== 0
           ? dispatch(setMainProjects([...tempArray]))
@@ -117,7 +118,7 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
         setTheme(getPreferredTheme());
       }
     },
-    [dispatch]
+    [dispatch],
   );
 
   React.useEffect(() => {
@@ -170,7 +171,9 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
     <ErrorBoundary FallbackComponent={AppFallback}>
       {/* https://reactrouter.com/6.28.0/upgrading/future#v7_starttransition */}
       {/* https://reactrouter.com/6.28.0/upgrading/future#v7_relativesplatpath */}
-      <HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true, }}>
+      <HashRouter
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <ThemeProvider theme={{ name: theme }}>
           <ScrollToTop />
           <GlobalStyles />

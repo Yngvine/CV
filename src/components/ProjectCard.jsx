@@ -118,6 +118,7 @@ const propTypes = {
 };
 
 const ProjectCard = ({ demo, description, image, name, period, status, id }) => {
+  console.log(id);
   const navigate = useNavigate();
   return (
     <StyledCard>

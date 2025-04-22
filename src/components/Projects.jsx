@@ -67,6 +67,7 @@ const Projects = () => {
                 return (
                   <Col key={element.id}>
                     <ProjectCard
+                      id={element.id}
                       image={element.image}
                       name={element.name}
                       period={element.period}
