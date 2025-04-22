@@ -80,6 +80,10 @@ const StyledCard = styled.div`
       background: ${({ theme }) =>
         theme.name === "light" ? "" : "var(--bs-gray-dark)"};
       z-index: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
 
       .card-link {
         color: ${({ theme }) =>
@@ -104,11 +108,13 @@ const propTypes = {
   demo: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.node,
+  period: PropTypes.string,
+  status: PropTypes.string,
   name: PropTypes.string.isRequired,
   urls: PropTypes.array,
 };
 
-const ProjectCard = ({ demo, description, image, name, urls }) => {
+const ProjectCard = ({ demo, description, image, name, period, status, }) => {
   return (
     <StyledCard>
       <Card>
@@ -129,12 +135,16 @@ const ProjectCard = ({ demo, description, image, name, urls }) => {
           ) : null}
         </Card.Body>
         <Card.Footer className="text-center">
-          {urls ? urls.map((url, index) => (
-            <Card.Link key={`resource-${index}`} href={url}>
-              {"View Resource "}
-              <Icon icon="icomoon-free:github" />
+          {period && (
+            <Card.Link>
+              <Icon icon="mdi:calendar-month-outline" /> {period}
             </Card.Link>
-          )): null}
+          )}
+          {status && (
+            <Card.Link>
+              <Icon icon="ic:baseline-check-circle" /> {status}
+            </Card.Link>
+          )}
         </Card.Footer>
       </Card>
     </StyledCard>

@@ -28,13 +28,18 @@ const Projects = () => {
     setProjects(Data.projects.map((project, index) => ({
       id: index + 1,
       name: project.title,
+      image: project.images ? require(`../${project.images[0]}`) : null,
+      period: project.year,
+      status: project.status,
       description: project.description,
       urls: project.links,
     })));
     setMainProjects(Data.projects.map((project, index) => ({
       id: index + 1,
       name: project.title,
-      image: project.image ? require(`../${project.image}`) : null,
+      image: project.images ? require(`../${project.images[0]}`) : null,
+      period: project.year,
+      status: project.status,
       description: project.description,
       urls: project.links,
     })));
@@ -64,6 +69,8 @@ const Projects = () => {
                     <ProjectCard
                       image={element.image}
                       name={element.name}
+                      period={element.period}
+                      status={element.status}
                       description={element.description}
                       urls={element.urls}
                       demo={element.homepage}
