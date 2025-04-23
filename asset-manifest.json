@@ -1,20 +1,35 @@
 {
   "files": {
     "main.css": "/CV/static/css/main.f3612727.css",
-    "main.js": "/CV/static/js/main.90d3b85d.js",
+    "main.js": "/CV/static/js/main.547803a2.js",
+    "static/media/Resume_Projects_Igor_Volodimir_Vons_Vons.pdf": "/CV/static/media/Resume_Projects_Igor_Volodimir_Vons_Vons.4c607f9e9c7940085683.pdf",
     "static/media/hero-dark.jpg": "/CV/static/media/hero-dark.37f2556d620821979e99.jpg",
+    "static/media/cell_conquest_game.jpg": "/CV/static/media/cell_conquest_game.b4a8c0ba04cccf2cfee9.jpg",
     "static/media/hero-light.jpg": "/CV/static/media/hero-light.78b77836d8aee4d7d3cb.jpg",
+    "static/media/artistry_page.jpg": "/CV/static/media/artistry_page.28cdd7cbbb50aba69b9a.jpg",
+    "static/media/dataset_analysis.jpg": "/CV/static/media/dataset_analysis.86823b127e9077fe512a.jpg",
     "static/media/template.jpg": "/CV/static/media/template.9211b09ddfb2b7c257d1.jpg",
+    "static/media/kronis_landing.jpg": "/CV/static/media/kronis_landing.63627f4c6a96e62150d6.jpg",
+    "static/media/web_scrapping.jpg": "/CV/static/media/web_scrapping.f0bddfb4a839f812fb89.jpg",
+    "static/media/sandbox_implementation.jpg": "/CV/static/media/sandbox_implementation.6fd9b48c2b9150587ca2.jpg",
+    "static/media/robo_arm.jpg": "/CV/static/media/robo_arm.52ac4b55d300c32903d0.jpg",
+    "static/media/image_classification.jpg": "/CV/static/media/image_classification.2a2efa37c3ad6b738dad.jpg",
+    "static/media/coinchip_app.jpg": "/CV/static/media/coinchip_app.ac3bb99a5c8b42fa654a.jpg",
+    "static/media/cansat_2020.jpg": "/CV/static/media/cansat_2020.f57b92df9448d7e3e458.jpg",
     "service-worker.js": "/CV/service-worker.js",
+    "static/media/madrid_emt.jpg": "/CV/static/media/madrid_emt.82e8b487e3a8a66dd733.jpg",
+    "static/media/sandbox_simulation.jpg": "/CV/static/media/sandbox_simulation.a44c15179a751d961a53.jpg",
+    "static/media/pyqt_logo.jpg": "/CV/static/media/pyqt_logo.43a291b75f3b3b17cb9f.jpg",
+    "static/media/data_regularization.jpg": "/CV/static/media/data_regularization.47c558d5816bd5c6b164.jpg",
     "static/media/GH.svg": "/CV/static/media/GH.b9e9a9aa6f05e9dfe5dcb8991bda3e4d.svg",
     "static/media/defaultNavLogo.svg": "/CV/static/media/defaultNavLogo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "static/media/logo.svg": "/CV/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/CV/index.html",
     "main.f3612727.css.map": "/CV/static/css/main.f3612727.css.map",
-    "main.90d3b85d.js.map": "/CV/static/js/main.90d3b85d.js.map"
+    "main.547803a2.js.map": "/CV/static/js/main.547803a2.js.map"
   },
   "entrypoints": [
     "static/css/main.f3612727.css",
-    "static/js/main.90d3b85d.js"
+    "static/js/main.547803a2.js"
   ]
 }
