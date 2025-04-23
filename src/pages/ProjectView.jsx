@@ -1,21 +1,34 @@
 
 import React from "react";
+import {useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Carousel, Container, Row, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 import Data from "../CV.json";
+import { filteredProjects } from "../config";
 
 const StyledSection = styled.section`
   .carousel {
     max-height: 400px;
     margin-bottom: 2rem;
-    
+
     img {
       max-height: 400px;
       object-fit: contain;
     }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      filter:  ${({ theme }) =>
+          theme.name === "light" ? "invert(1)" : "invert(0)"};
+    }
+
+    .carousel-indicators [data-bs-target] {
+      filter: invert(1);
+    }
   }
+
 
   .project-title {
     text-align: center;
@@ -51,6 +64,11 @@ const ProjectView = () => {
   const { id } = useParams();
   console.log(id);
   const project = Data.projects[parseInt(id) - 1];
+
+  useEffect(() => {
+    console.log("Current theme attr:", document.body.getAttribute("data-bs-theme"));
+  }, []);
+
 
   return (
     <main>

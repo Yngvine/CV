@@ -23,6 +23,8 @@ import BackToTop from "../components/BackToTop";
 // Utils
 import { updateTitle } from "../utils";
 
+import Data from "../CV.json"
+
 // #region styled-components
 const StyledSection = styled.section`
   .input-group {
@@ -43,19 +45,20 @@ const AllProjects = () => {
   const [filteredResults, setFilteredResults] = React.useState([]);
   const [pageItems, setPageItems] = React.useState([]);
   const [activePage, setActivePage] = React.useState(1);
-  const data = useSelector(selectProjects);
+  const data = Data.projects;
   const { data: userData } = useGetUsersQuery();
   const { isLoading, isSuccess, isError, error } = useGetProjectsQuery();
   let content;
 
   React.useEffect(() => {
-    updateTitle(`${userData.name} | All Projects`);
+    updateTitle(`${Data.personal_information.name_simplified} | All Projects`);
   }, [userData]);
 
   React.useEffect(() => {
     if (searchInput !== "") {
       const filteredData = data.filter((item) => {
-        return item.name.toLowerCase().includes(searchInput.toLowerCase());
+        return item.title.toLowerCase().includes(searchInput.toLowerCase()) || 
+          item.description.toLowerCase().includes(searchInput.toLowerCase());
       });
       const tempPageItems = [];
       for (
@@ -144,10 +147,13 @@ const AllProjects = () => {
                   return (
                     <Col key={element.id}>
                       <ProjectCard
-                        image={element.image}
-                        name={element.name}
+                        id={element.id}
+                        image={element.images ? require(`../${element.images[0]}`) : null}
+                        name={element.title}
                         description={element.description}
                         url={element.html_url}
+                        period={element.year}
+                        status={element.status}
                         demo={element.homepage}
                       />
                     </Col>
@@ -157,10 +163,13 @@ const AllProjects = () => {
                   return (
                     <Col key={element.id}>
                       <ProjectCard
-                        image={element.image}
-                        name={element.name}
+                        id={element.id}
+                        image={element.images ? require(`../${element.images[0]}`) : null}
+                        name={element.title}
                         description={element.description}
                         url={element.html_url}
+                        period={element.year}
+                        status={element.status}
                         demo={element.homepage}
                       />
                     </Col>

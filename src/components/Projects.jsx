@@ -25,8 +25,8 @@ const Projects = () => {
   let content;
 
   useEffect(() => {
-    setProjects(Data.projects.map((project, index) => ({
-      id: index + 1,
+    setProjects(Data.projects.map((project) => ({
+      id: project.id,
       name: project.title,
       image: project.images ? require(`../${project.images[0]}`) : null,
       period: project.year,
@@ -34,8 +34,8 @@ const Projects = () => {
       description: project.description,
       urls: project.links,
     })));
-    setMainProjects(Data.projects.map((project, index) => ({
-      id: index + 1,
+    setMainProjects(Data.projects.slice(0,6).map((project) => ({
+      id: project.id,
       name: project.title,
       image: project.images ? require(`../${project.images[0]}`) : null,
       period: project.year,

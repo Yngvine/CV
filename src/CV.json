@@ -1,9 +1,11 @@
 {
   "personal_information": {
     "name": "Igor Volodimir Vons Vons",
+    "name_simplified": "Igor Vons",
+    "profile_picture": "images/profile.jpg",
     "email": "igorvons3@gmail.com",
     "date_of_birth": "12/11/2002",
-    "place_of_birth": "Pamplona, Navarra",
+    "place_of_birth": "Pamplona, Navarra, Spain",
     "nationality": "Spain",
     "gender": "Male",
     "driving_license": "B",
@@ -13,48 +15,62 @@
   "working_experience": [
     {
       "title": "Programmer/Developer",
+      "logo": "images/template.jpg",
       "company": "Splorotech S.L., Pamplona",
       "description": "Junior Developer on the web software tool Kronis",
       "start_date": "Sep 2023",
       "end_date": "Jun 2024"
+    },
+    {
+      "title": "IT Manager/Developer",
+      "logo": "images/template.jpg",
+      "company": "Viscofan, Pamplona",
+      "description": "IT Manager responsible for the administration of M360 platform apps and PowerPlatform Developer",
+      "start_date": "Feb 2025",
+      "end_date": "Nov 2025"
     }
   ],
   "education": [
     {
       "level": "Secondary Compulsory Education (ESO)",
       "institution": "IES Barañain, Barañain",
+      "location": "Barañain, Navarra, Spain",
       "start_date": "Sep 2014",
       "end_date": "Jun 2018"
     },
     {
       "level": "High School (Bachillerato) in Science & Engineering",
       "institution": "IES Barañain, Barañain",
+      "location": "Barañain, Navarra, Spain",
       "start_date": "Sep 2018",
       "end_date": "Jul 2020"
     },
     {
       "level": "Erasmus+ Program",
       "institution": "Zespół Szkół Urszulańskich w Rybniku (Ursulines School Complex in Rybnik)",
-      "location": "Rybnik",
+      "location": "Rybnik, Silesia, Poland",
       "date": "Mar 2018"
     },
     {
       "level": "Bachelor’s degree in Computer Science/Informatics Engineering",
       "institution": "Public University of Navarre (UPNA), Pamplona",
+      "location": "Pamplona, Navarra, Spain",
       "start_date": "Sep 2020",
       "end_date": "Jun 2024"
     },
     {
       "level": "Erasmus+ Program",
       "institution": "Blekinge Tekniska Högskola (Blekinge Institute of Technology)",
-      "location": "Karlskrona",
+      "location": "Karlskrona, Blekinge, Sweden",
       "start_date": "Jan 2024",
       "end_date": "Jun 2024"
     }
   ],
   "personal_interests": [
     "IA driven development",
+    "Data Science",
     "Cartography",
+    "History",
     "Art/Music",
     "Game development"
   ],
@@ -62,41 +78,61 @@
     {
       "name": "Python",
       "level": "Advanced",
+      "level_num": 4,
       "icon": "logos:python"
     },
     {
       "name": "Django",
       "level": "Intermediate",
+      "level_num": 3,
       "icon": "vscode-icons:file-type-django"
     },
     {
       "name": "C/C++",
-      "level": "Intermediate",
+      "level": "Basic",
+      "level_num": 2,
       "icon": "logos:c-plusplus"
     },
     {
       "name": "C#/.NET",
-      "level": "Basic",
+      "level": "Novice",
+      "level_num": 1,
       "icon": "devicon:csharp"
     },
     {
       "name": "JavaScript",
       "level": "Intermediate",
+      "level_num": 3,
       "icon": "logos:javascript"
     },
     {
-      "name": "Java",
+      "name": "HTML/CSS",
       "level": "Basic",
+      "level_num": 2,
+      "icon": "vscode-icons:file-type-html"
+    },
+    {
+      "name": "React",
+      "level": "Basic",
+      "level_num": 2,
+      "icon": "logos:react"
+    },
+    {
+      "name": "Java",
+      "level": "Novice",
+      "level_num": 1,
       "icon": "logos:java"
     },
     {
-      "name": "SQL",
+      "name": "SQL(Oracle/MySQL)",
       "level": "Intermediate",
+      "level_num": 3,
       "icon": "vscode-icons:file-type-sql"
     },
     {
       "name": "Git",
       "level": "Advanced",
+      "level_num": 4,
       "icon": "logos:git"
     }
   ],
@@ -108,8 +144,9 @@
   },
   "projects": [
     {
+      "id": 1,
       "title": "Amazon web scraping and predictor training",
-      "images": ["images/template.jpg"],
+      "images": ["images/web_scrapping.jpg"],
       "year": "2022",
       "description": "A script was designed to collect comments from various Amazon products. Translations were embedded for comments in different languages, followed by a model training phase that predicted the star rating from comment text.",
       "skills": ["web scraping", "handling headers in web requests", "embedding translation and use", "machine learning model training"],
@@ -118,7 +155,9 @@
       "status": "finished"
     },
     {
+      "id": 2,
       "title": "Dataset regularization and ML model comparison",
+      "images": ["images/data_regularization.jpg"],
       "year": "2023",
       "description": "An incomplete dataset containing economic information and bankruptcy labels was cleaned and pre-processed before training several models to find the most suitable classification algorithm.",
       "skills": ["defective dataset analysis", "data treatment", "machine learning model training"],
@@ -127,7 +166,9 @@
       "status": "finished"
     },
     {
+      "id": 3,
       "title": "Image processing and classification",
+      "images": ["images/image_classification.jpg"],
       "year": "2022",
       "description": "This project involved processing and vectorizing an image dataset of dogs and cats. The goal was to classify them using image features and machine learning techniques.",
       "skills": ["image processing", "vectorization", "machine learning model training"],
@@ -136,7 +177,9 @@
       "status": "finished"
     },
     {
+      "id": 4,
       "title": "Dataset analysis and model training",
+      "images": ["images/dataset_analysis.jpg"],
       "year": "2022",
       "description": "A dataset was selected and analyzed to study the relationship between attributes and class labels. A variety of machine learning models were trained and evaluated.",
       "skills": ["dataset analysis", "machine learning model training"],
@@ -145,7 +188,9 @@
       "status": "finished"
     },
     {
+      "id": 5,
       "title": "Cell conquest/tower defense game",
+      "images": ["images/cell_conquest_game.jpg"],
       "year": "2022",
       "description": "A real-time multiplayer game developed in Java where players compete by expanding their territory and attacking others using programmed cells. Networking and event handling were central to gameplay.",
       "skills": ["Java programming", "asynchronous event handling", "network communication", "interface implementation"],
@@ -154,7 +199,9 @@
       "status": "finished"
     },
     {
+      "id": 6,
       "title": "Madrid bus lines web",
+      "images": ["images/madrid_emt.jpg"],
       "year": "2023",
       "description": "A web project using the EMT API of Madrid to visualize public transport lines. Implemented using vanilla PHP and JS with a MySQL database. Admin tools and user login included.",
       "skills": ["HTML", "JavaScript", "PHP (without a framework)", "API communication", "phpMyAdmin", "user access control", "file generation and download", "Postman"],
@@ -163,7 +210,9 @@
       "status": "finished"
     },
     {
+      "id": 7,
       "title": "Art sales website",
+      "images": ["images/artistry_page.jpg"],
       "year": "2023",
       "description": "A sales site built from scratch with pagination, filters, mock purchases, admin features, and login functionality. Built with PHP, JS, and MySQL using XAMPP.",
       "skills": ["Xampp", "HTML", "JavaScript", "PHP", "MySQL", "Scrum", "Git/GitLab", "user access control", "inventory management", "file generation and download"],
@@ -172,7 +221,9 @@
       "status": "finished"
     },
     {
+      "id": 8,
       "title": "Translation of Qt examples from C++ to Python",
+      "images": ["images/pyqt_logo.jpg"],
       "year": "2022",
       "description": "A personal project to learn PySide by translating Qt C++ examples to Python. It helped understand GUI layout design, signals/slots, and SVG rendering.",
       "skills": ["Python/C++ programming", "code translation", "PySide", "PyQt", "Qt interface development"],
@@ -181,7 +232,9 @@
       "status": "finished"
     },
     {
+      "id": 9,
       "title": "Project Caelus",
+      "images": ["images/cansat_2020.jpg"],
       "year": "2020",
       "description": "A CanSat Navarra project involving a soda can-sized satellite with sensors and a parachute. Worked on 3D design, Arduino integration, and mechanical components.",
       "skills": ["3D modeling (FreeCad)", "3D printing", "Arduino", "basic aerodynamics"],
@@ -190,7 +243,9 @@
       "status": "finished"
     },
     {
+      "id": 10,
       "title": "Collaboration grant/Thesis",
+      "images": ["images/sandbox_implementation.jpg", "images/sandbox_simulation.jpg"],
       "year": "2022–2024",
       "description": "Started as a collaboration grant and evolved into a thesis with a reactive sand-based interface for image generation. The system uses a Kinect camera, switch-based communication, and AI models to interpret sand deformation and generate matching images.",
       "skills": ["AI generative technologies", "switch-based communication", "Azure Kinect framework", "3D modeling (Blender)", "image processing"],
@@ -199,7 +254,9 @@
       "status": "finished"
     },
     {
+      "id": 11,
       "title": "Back-end/front-end development + Kronis APIs",
+      "images": ["images/kronis_landing.jpg"],
       "year": "2023–2024",
       "description": "Work for the Kronis web app including API creation, Django backend, frontend refactors, and migration to React. Tasks included database modeling, route creation, and UI improvements.",
       "skills": ["Django models/views", "Django migrations", "Postman", "Scrum/Kanban", "Ajax requests", "CSS/XPATH selectors", "Git/GitHub", "Pycharm", "custom API implementation", "Selenium"],
@@ -208,7 +265,9 @@
       "status": "finished"
     },
     {
+      "id": 13,
       "title": "RoboArm",
+      "images": ["images/robo_arm.jpg"],
       "year": "2023",
       "description": "A robotic arm connected to an Arduino and synced with a PC-based simulation to lift and move cubes. Involved mechanical and software integration, from design to electronics.",
       "skills": ["piece design", "laser cutting", "Processing programming", "Arduino", "electronic component assembly"],
@@ -217,7 +276,9 @@
       "status": "finished"
     },
     {
+      "id": 14,
       "title": "Numismatics project",
+      "images": ["images/coinchip_app.jpg"],
       "year": "2024",
       "description": "3D printing project aimed at preserving numismatic items with replicable, scalable tools and designs. Developed a desktop app for viewing and processing 3D models using CadQuery and VTK.",
       "skills": ["Python", "PySide6", "VTK", "CadQuery"],
@@ -226,6 +287,7 @@
       "status": "in progress"
     },
     {
+      "id": 15,
       "title": "Mountain Shelters Website",
       "year": "2024",
       "description": "Collaborative .NET + React web project to map and manage information about mountain shelters. Used EF, SQLite, dynamic filters, and mapping features.",
@@ -235,6 +297,7 @@
       "status": "in progress"
     },
     {
+      "id": 16,
       "title": "Personal Website",
       "year": "2025",
       "description": "Create a website to showcase the resume and projects in an accessible format.",
@@ -242,6 +305,7 @@
       "status": "future"
     },
     {
+      "id": 17,
       "title": "Further Studies: AI Master",
       "year": "2025–2026",
       "description": "Pursue an AI Master’s degree offered by UPNA for the 2025-2026 academic year to deepen knowledge of machine learning, AI systems, and ethical application.",

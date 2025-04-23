@@ -13,22 +13,24 @@ import { filteredProjects, moreInfo } from "../config";
 // Utils
 import { updateTitle } from "../utils";
 
+import Data from "../CV.json"
+
 // #region component
 const Home = () => {
   const { data: userData } = useGetUsersQuery();
 
   React.useEffect(() => {
-    updateTitle(`${userData.name} | Portfolio`);
+    updateTitle(`${Data.personal_information.name_simplified} | Portfolio`);
   }, [userData]);
 
   return (
     <>
-      <Hero name={userData.name} />
+      <Hero name={Data.personal_information.name} />
       <main>
         <AboutMe
           avatar_url={userData.avatar_url}
-          bio={userData.bio}
-          moreInfo={moreInfo}
+          bio={"Most notable interests: " + Data.personal_interests.join(", ")}
+          moreInfo={Data.additional_info}
         />
         <Skills />
         <Projects filteredProjects={filteredProjects} />
