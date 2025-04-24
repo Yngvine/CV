@@ -31,6 +31,7 @@ const Home = () => {
           avatar_url={userData.avatar_url}
           bio={"Most notable interests: " + Data.personal_interests.join(", ")}
           moreInfo={Data.additional_info}
+          languages={Data.languages}
         />
         <Skills />
         <Projects filteredProjects={filteredProjects} />

@@ -8,6 +8,8 @@ import { Element } from "react-scroll";
 import { Col, Container, Row } from "react-bootstrap";
 import Title from "./Title";
 
+import ReactCountryFlag from "react-country-flag";
+
 // #region styled-components
 const StyledAboutMe = styled.section`
   p {
@@ -25,9 +27,10 @@ const propTypes = {
   avatar_url: PropTypes.string.isRequired,
   bio: PropTypes.string,
   moreInfo: PropTypes.string,
+  languages: PropTypes.any,
 };
 
-const AboutMe = ({ avatar_url, bio, moreInfo }) => {
+const AboutMe = ({ avatar_url, bio, moreInfo, languages }) => {
   return (
     <Element name={"About"} id="about">
       <StyledAboutMe className="section">
@@ -50,6 +53,22 @@ const AboutMe = ({ avatar_url, bio, moreInfo }) => {
                 className="mx-auto rounded-circle border border-primary-subtle"
                 style={{ width: "15rem", height: "15rem" }}
               />
+            </Col>
+          </Row>
+          <Row className="mt-5">
+            <Col className="text-center">
+              <h3 className="mb-3">Languages</h3>
+              <ul className="list-group">
+                {languages.map((language) => {
+                  return(
+                    <li className="list-group-item">
+                      <span className="fw-bold">
+                        <ReactCountryFlag countryCode={language.code} svg style={{ width: '2em', height: '2em' }} title="United States" /> {language.name} 
+                      </span> - {language.level}
+                    </li>
+                  )
+                })}
+              </ul>
             </Col>
           </Row>
         </Container>

@@ -12,10 +12,10 @@ const TitleDiv = styled.div`
   margin: 0.5rem 0;
 
   .underline {
-    height: 0.25rem;
-    width: 75%;
+    height: 0.1rem;
+    width: 100%;
     min-width: 3rem;
-    border-radius: 0.25rem;
+    border-radius: 0.1rem;
     margin: 0 auto 0 auto;
     background: ${({ theme }) =>
       theme.name === "light"

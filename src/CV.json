@@ -6,6 +6,7 @@
     "email": "igorvons3@gmail.com",
     "date_of_birth": "12/11/2002",
     "place_of_birth": "Pamplona, Navarra, Spain",
+    "location": "Barañain, Navarra, Spain",
     "nationality": "Spain",
     "gender": "Male",
     "driving_license": "B",
@@ -135,13 +136,41 @@
       "level_num": 4,
       "icon": "logos:git"
     }
+    {
+      "name": "Onshape",
+      "level": "Intermediate",
+      "level_num": 3,
+      "icon": "logos:onshape"
+    }
+    {
+      "name": "Blender",
+      "level": "Novice",
+      "level_num": 1,
+      "icon": "logos:blender"
+    }
   ],
-  "languages": {
-    "Español": "Mother tongue",
-    "Ucraniano": "Mother tongue",
-    "Inglés": "C2",
-    "Ruso": "Good working knowledge"
-  },
+  "languages": [
+    {
+      "name": "Spanish",
+      "level": "Mother tongue",
+      "code": "ES"
+    },
+    {
+      "name": "Ukranian",
+      "level": "Mother tongue",
+      "code": "UA"
+    },
+    {
+      "name": "English",
+      "level": "C2",
+      "code": "GB"
+    },
+    {
+      "name": "Russian",
+      "level": "Good working knowledge",
+      "code": "RU"
+    }
+  ],
   "projects": [
     {
       "id": 1,
@@ -149,8 +178,15 @@
       "images": ["images/web_scrapping.jpg"],
       "year": "2022",
       "description": "A script was designed to collect comments from various Amazon products. Translations were embedded for comments in different languages, followed by a model training phase that predicted the star rating from comment text.",
-      "skills": ["web scraping", "handling headers in web requests", "embedding translation and use", "machine learning model training"],
-      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Review_classification"],
+      "skills": [
+        "web scraping",
+        "handling headers in web requests",
+        "embedding translation and use",
+        "machine learning model training"
+      ],
+      "links": [
+        "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Review_classification"
+      ],
       "type": "academic",
       "status": "finished"
     },
@@ -160,8 +196,15 @@
       "images": ["images/data_regularization.jpg"],
       "year": "2023",
       "description": "An incomplete dataset containing economic information and bankruptcy labels was cleaned and pre-processed before training several models to find the most suitable classification algorithm.",
-      "skills": ["defective dataset analysis", "data treatment", "machine learning model training"],
-      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Dataset_regularization", "https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction"],
+      "skills": [
+        "defective dataset analysis",
+        "data treatment",
+        "machine learning model training"
+      ],
+      "links": [
+        "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Dataset_regularization",
+        "https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction"
+      ],
       "type": "academic",
       "status": "finished"
     },
@@ -171,8 +214,14 @@
       "images": ["images/image_classification.jpg"],
       "year": "2022",
       "description": "This project involved processing and vectorizing an image dataset of dogs and cats. The goal was to classify them using image features and machine learning techniques.",
-      "skills": ["image processing", "vectorization", "machine learning model training"],
-      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Image_classification"],
+      "skills": [
+        "image processing",
+        "vectorization",
+        "machine learning model training"
+      ],
+      "links": [
+        "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Image_classification"
+      ],
       "type": "academic",
       "status": "finished"
     },
@@ -183,7 +232,10 @@
       "year": "2022",
       "description": "A dataset was selected and analyzed to study the relationship between attributes and class labels. A variety of machine learning models were trained and evaluated.",
       "skills": ["dataset analysis", "machine learning model training"],
-      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Dataset_study", "https://www.kaggle.com/datasets/muratkokludataset/acoustic-extinguisher-fire-dataset"],
+      "links": [
+        "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Dataset_study",
+        "https://www.kaggle.com/datasets/muratkokludataset/acoustic-extinguisher-fire-dataset"
+      ],
       "type": "academic",
       "status": "finished"
     },
@@ -193,8 +245,15 @@
       "images": ["images/cell_conquest_game.jpg"],
       "year": "2022",
       "description": "A real-time multiplayer game developed in Java where players compete by expanding their territory and attacking others using programmed cells. Networking and event handling were central to gameplay.",
-      "skills": ["Java programming", "asynchronous event handling", "network communication", "interface implementation"],
-      "links": ["https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Cell_conquest_game"],
+      "skills": [
+        "Java programming",
+        "asynchronous event handling",
+        "network communication",
+        "interface implementation"
+      ],
+      "links": [
+        "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Cell_conquest_game"
+      ],
       "type": "academic",
       "status": "finished"
     },
@@ -204,7 +263,16 @@
       "images": ["images/madrid_emt.jpg"],
       "year": "2023",
       "description": "A web project using the EMT API of Madrid to visualize public transport lines. Implemented using vanilla PHP and JS with a MySQL database. Admin tools and user login included.",
-      "skills": ["HTML", "JavaScript", "PHP (without a framework)", "API communication", "phpMyAdmin", "user access control", "file generation and download", "Postman"],
+      "skills": [
+        "HTML",
+        "JavaScript",
+        "PHP (without a framework)",
+        "API communication",
+        "phpMyAdmin",
+        "user access control",
+        "file generation and download",
+        "Postman"
+      ],
       "links": ["https://apidocs.emtmadrid.es"],
       "type": "academic",
       "status": "finished"
@@ -215,7 +283,18 @@
       "images": ["images/artistry_page.jpg"],
       "year": "2023",
       "description": "A sales site built from scratch with pagination, filters, mock purchases, admin features, and login functionality. Built with PHP, JS, and MySQL using XAMPP.",
-      "skills": ["Xampp", "HTML", "JavaScript", "PHP", "MySQL", "Scrum", "Git/GitLab", "user access control", "inventory management", "file generation and download"],
+      "skills": [
+        "Xampp",
+        "HTML",
+        "JavaScript",
+        "PHP",
+        "MySQL",
+        "Scrum",
+        "Git/GitLab",
+        "user access control",
+        "inventory management",
+        "file generation and download"
+      ],
       "links": ["https://github.com/Yngvine/AIshoppingweb"],
       "type": "academic",
       "status": "finished"
@@ -226,8 +305,17 @@
       "images": ["images/pyqt_logo.jpg"],
       "year": "2022",
       "description": "A personal project to learn PySide by translating Qt C++ examples to Python. It helped understand GUI layout design, signals/slots, and SVG rendering.",
-      "skills": ["Python/C++ programming", "code translation", "PySide", "PyQt", "Qt interface development"],
-      "links": ["https://github.com/Yngvine/QTSvg_Example_Python", "https://github.com/Yngvine/Calculator"],
+      "skills": [
+        "Python/C++ programming",
+        "code translation",
+        "PySide",
+        "PyQt",
+        "Qt interface development"
+      ],
+      "links": [
+        "https://github.com/Yngvine/QTSvg_Example_Python",
+        "https://github.com/Yngvine/Calculator"
+      ],
       "type": "personal",
       "status": "finished"
     },
@@ -237,7 +325,12 @@
       "images": ["images/cansat_2020.jpg"],
       "year": "2020",
       "description": "A CanSat Navarra project involving a soda can-sized satellite with sensors and a parachute. Worked on 3D design, Arduino integration, and mechanical components.",
-      "skills": ["3D modeling (FreeCad)", "3D printing", "Arduino", "basic aerodynamics"],
+      "skills": [
+        "3D modeling (FreeCad)",
+        "3D printing",
+        "Arduino",
+        "basic aerodynamics"
+      ],
       "links": ["https://www.instagram.com/caelusproject/?hl=es"],
       "type": "personal",
       "status": "finished"
@@ -245,11 +338,22 @@
     {
       "id": 10,
       "title": "Collaboration grant/Thesis",
-      "images": ["images/sandbox_implementation.jpg", "images/sandbox_simulation.jpg"],
+      "images": [
+        "images/sandbox_implementation.jpg",
+        "images/sandbox_simulation.jpg"
+      ],
       "year": "2022–2024",
       "description": "Started as a collaboration grant and evolved into a thesis with a reactive sand-based interface for image generation. The system uses a Kinect camera, switch-based communication, and AI models to interpret sand deformation and generate matching images.",
-      "skills": ["AI generative technologies", "switch-based communication", "Azure Kinect framework", "3D modeling (Blender)", "image processing"],
-      "links": ["https://github.com/Yngvine/Small-projects/tree/21e1e4aa40bea68cc2d3b71e2cb50242217588cf/Sand_Difussion"],
+      "skills": [
+        "AI generative technologies",
+        "switch-based communication",
+        "Azure Kinect framework",
+        "3D modeling (Blender)",
+        "image processing"
+      ],
+      "links": [
+        "https://github.com/Yngvine/Small-projects/tree/21e1e4aa40bea68cc2d3b71e2cb50242217588cf/Sand_Difussion"
+      ],
       "type": "other",
       "status": "finished"
     },
@@ -259,7 +363,18 @@
       "images": ["images/kronis_landing.jpg"],
       "year": "2023–2024",
       "description": "Work for the Kronis web app including API creation, Django backend, frontend refactors, and migration to React. Tasks included database modeling, route creation, and UI improvements.",
-      "skills": ["Django models/views", "Django migrations", "Postman", "Scrum/Kanban", "Ajax requests", "CSS/XPATH selectors", "Git/GitHub", "Pycharm", "custom API implementation", "Selenium"],
+      "skills": [
+        "Django models/views",
+        "Django migrations",
+        "Postman",
+        "Scrum/Kanban",
+        "Ajax requests",
+        "CSS/XPATH selectors",
+        "Git/GitHub",
+        "Pycharm",
+        "custom API implementation",
+        "Selenium"
+      ],
       "links": ["https://kronis.app"],
       "type": "other",
       "status": "finished"
@@ -270,7 +385,13 @@
       "images": ["images/robo_arm.jpg"],
       "year": "2023",
       "description": "A robotic arm connected to an Arduino and synced with a PC-based simulation to lift and move cubes. Involved mechanical and software integration, from design to electronics.",
-      "skills": ["piece design", "laser cutting", "Processing programming", "Arduino", "electronic component assembly"],
+      "skills": [
+        "piece design",
+        "laser cutting",
+        "Processing programming",
+        "Arduino",
+        "electronic component assembly"
+      ],
       "links": ["https://github.com/Ninjalice/ROBOARM"],
       "type": "other",
       "status": "finished"
@@ -292,7 +413,10 @@
       "year": "2024",
       "description": "Collaborative .NET + React web project to map and manage information about mountain shelters. Used EF, SQLite, dynamic filters, and mapping features.",
       "skills": [".NET", "ASP.NET", "Flask", "React"],
-      "links": ["https://github.com/Ninjalice/BE-OpenCabins", "https://github.com/Ninjalice/FE-OpenCabins"],
+      "links": [
+        "https://github.com/Ninjalice/BE-OpenCabins",
+        "https://github.com/Ninjalice/FE-OpenCabins"
+      ],
       "type": "personal",
       "status": "in progress"
     },
@@ -313,7 +437,6 @@
       "type": "academic",
       "status": "future"
     }
-  ]
-,
+  ],
   "additional_info": "This document is a condensed collection of various projects that showcase knowledge, experience, and future development ideas."
 }

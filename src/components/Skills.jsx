@@ -55,9 +55,9 @@ const Skills = () => {
           <Container className="d-flex justify-content-center">
             <Title size={"h2"} text={"Skills"} />
           </Container>
-          <Row xs={3} md={4} lg={6} className="mt-3 align-items-center">
+          <Row xs={3} md={4} lg={6} className="mt-3 align-items-center" style={{ justifyContent: "center" }}>
             {skills.map((skill) => (
-              <Col key={skill.id} className="my-md-5">
+              <Col key={skill.id} className="my-md-5" style={{ textAlign: "center" }}>
                 <figure>
                   {skill.skill}
                   <figcaption>{skill.name}</figcaption>

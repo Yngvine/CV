@@ -7,6 +7,7 @@ import { Element } from "react-scroll";
 import Title from "./Title";
 import { Container, Row, Col } from "react-bootstrap";
 import { Icon } from "@iconify/react";
+import Data from "../CV.json"
 
 const StyledSection = styled.section`
   min-height: calc(100vh - var(--nav-height) - 2rem);
@@ -26,12 +27,7 @@ const Contact = () => {
   const [contactInfo, setContactInfo] = useState(null);
 
   useEffect(() => {
-    fetch('/CV/CV.json')
-      .then(response => response.json())
-      .then(data => {
-        setContactInfo(data.personal_information);
-      })
-      .catch(error => console.error('Error loading contact info:', error));
+    setContactInfo(Data.personal_information);
   }, []);
 
   return (
@@ -49,12 +45,8 @@ const Contact = () => {
                   <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
                 </div>
                 <div className="contact-item">
-                  <Icon icon="mdi:phone" className="contact-icon" />
-                  <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}</a>
-                </div>
-                <div className="contact-item">
                   <Icon icon="mdi:map-marker" className="contact-icon" />
-                  <span>{contactInfo.address}</span>
+                  <span>{contactInfo.location}</span>
                 </div>
                 <div className="contact-item">
                   <Icon icon="mdi:linkedin" className="contact-icon" />
