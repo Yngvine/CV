@@ -135,13 +135,13 @@
       "level": "Advanced",
       "level_num": 4,
       "icon": "logos:git"
-    }
+    },
     {
       "name": "Onshape",
       "level": "Intermediate",
       "level_num": 3,
       "icon": "logos:onshape"
-    }
+    },
     {
       "name": "Blender",
       "level": "Novice",
