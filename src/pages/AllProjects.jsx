@@ -2,8 +2,6 @@ import React from "react";
 // Styles
 import styled from "styled-components";
 // State
-import { useSelector } from "react-redux";
-import { selectProjects } from "../app/projectsSlice";
 import { useGetUsersQuery, useGetProjectsQuery } from "../app/apiSlice";
 // Icons
 import { Icon } from "@iconify/react/dist/iconify.js";

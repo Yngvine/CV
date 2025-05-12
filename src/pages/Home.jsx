@@ -9,7 +9,7 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import BackToTop from "../components/BackToTop";
 // Config
-import { filteredProjects, moreInfo } from "../config";
+import { filteredProjects } from "../config";
 // Utils
 import { updateTitle } from "../utils";
 

@@ -32,7 +32,6 @@ import Footer from "./components/Footer";
 import { footerTheme, navLogo } from "./config";
 // Util
 import { getStoredTheme, getPreferredTheme, setTheme, registerRawSvg } from "./utils";
-import { addIcon } from "@iconify/react";
 import onshapeSvg from './images/onshape.raw.svg';
 
 // #region component
@@ -91,7 +90,7 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
   }, [projectsData, projectCardImages, dispatch]);
 
   // paste the raw SVG path data or the entire SVG as an object:
-  registerRawSvg('custom:onshape', onshapeSvg, 24);
+  registerRawSvg('custom:onshape', onshapeSvg);
 
   // Set main projects state
   React.useEffect(() => {

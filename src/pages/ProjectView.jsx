@@ -6,7 +6,6 @@ import { Carousel, Container, Row, Col, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 import Data from "../CV.json";
-import { filteredProjects } from "../config";
 
 const StyledSection = styled.section`
   .carousel {

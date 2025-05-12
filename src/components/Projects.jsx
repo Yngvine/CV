@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 // State
 import { useSelector } from "react-redux";
 import { selectMode } from "../app/appSlice";
-import { selectProjects, selectMainProjects } from "../app/projectsSlice";
 import { useGetProjectsQuery } from "../app/apiSlice";
 // Router
 import { Link } from "react-router-dom";
-// Icons
-import { Icon } from "@iconify/react";
 // Components
 import { Element } from "react-scroll";
 import { Button, Col, Container, Row } from "react-bootstrap";
