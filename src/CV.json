@@ -140,7 +140,7 @@
       "name": "Onshape",
       "level": "Intermediate",
       "level_num": 3,
-      "icon": "logos:onshape"
+      "icon": "custom:onshape"
     },
     {
       "name": "Blender",

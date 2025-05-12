@@ -1,3 +1,5 @@
+import { addIcon } from "@iconify/react";
+
 // Update tab title
 export const updateTitle = (title) => (document.title = title);
 
@@ -38,3 +40,25 @@ export const postData = async (url, data) => {
   });
   return response;
 };
+
+// utils/iconifyHelpers.js
+export function registerRawSvg(name, rawSvg) {
+  const svgBody = rawSvg
+    .replace(/<svg[^>]*>/i, "")
+    .replace(/<\/svg>/i, "")
+    .trim();
+
+  const re = /viewBox="\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*"/i;
+  const match = rawSvg.match(re);
+
+  const [, minX, minY, width, height] = match;
+
+  addIcon(name, {
+    body: svgBody,
+    width: width,
+    height: height,
+    // Iconify React will use `viewBox` automatically if you build the icon data with it:
+    // by default, `addIcon()` does not take viewBox, but custom builds (via addCollection)
+    // can include it. If you need exact control, use addCollection instead.
+  });
+}
