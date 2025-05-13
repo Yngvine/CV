@@ -50,8 +50,8 @@ const AboutMe = ({ avatar_url, bio, moreInfo, languages }) => {
                 src={avatar_url}
                 alt="GitHub Avatar"
                 loading="lazy"
-                className="mx-auto rounded-circle border border-primary-subtle"
-                style={{ width: "15rem", height: "15rem" }}
+                className="mx-auto border border-primary-subtle"
+                style={{ width: "15rem", height: "15rem", borderRadius: "25%" }}
               />
             </Col>
           </Row>
@@ -62,9 +62,16 @@ const AboutMe = ({ avatar_url, bio, moreInfo, languages }) => {
                 {languages.map((language) => {
                   return(
                     <li className="list-group-item">
-                      <span className="fw-bold">
-                        <ReactCountryFlag countryCode={language.code} svg style={{ width: '2em', height: '2em' }} title="United States" /> {language.name} 
-                      </span> - {language.level}
+                      <div className="row">
+                        <div className="col-8 text-start">
+                          <span className="fw-bold">
+                            <ReactCountryFlag countryCode={language.code} svg style={{ width: '2em', height: '2em' }}/> {language.name} 
+                          </span>
+                        </div>
+                        <div className="col-4 text-end">
+                          {language.level}
+                        </div>
+                      </div>
                     </li>
                   )
                 })}
