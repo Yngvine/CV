@@ -16,19 +16,34 @@
   "working_experience": [
     {
       "title": "Programmer/Developer",
-      "logo": "images/template.jpg",
+      "logo": "custom:sploro",
       "company": "Splorotech S.L., Pamplona",
       "description": "Junior Developer on the web software tool Kronis",
       "start_date": "Sep 2023",
-      "end_date": "Jun 2024"
+      "end_date": "Jun 2024",
+      "responsibilities": [
+        "API creation",
+        "Django backend development",
+        "Frontend refactors",
+        "Migration to React",
+        "Database modeling",
+        "Route creation",
+        "UI improvements"
+      ]
     },
     {
       "title": "IT Manager/Developer",
-      "logo": "images/template.jpg",
+      "logo": "custom:viscofan",
       "company": "Viscofan, Pamplona",
       "description": "IT Manager responsible for the administration of M360 platform apps and PowerPlatform Developer",
       "start_date": "Feb 2025",
-      "end_date": "Nov 2025"
+      "end_date": "Nov 2025",
+      "responsibilities": [
+        "M360 platform app administration",
+        "PowerPlatform app development",
+        "Database modeling",
+        "Route creation"
+      ]
     }
   ],
   "education": [

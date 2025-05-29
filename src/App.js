@@ -33,6 +33,8 @@ import { footerTheme, navLogo } from "./config";
 // Util
 import { getStoredTheme, getPreferredTheme, setTheme, registerRawSvg } from "./utils";
 import onshapeSvg from './images/onshape.raw.svg';
+import viscofanSvg from './images/viscofan.raw.svg';
+import sploroSvg from './images/sploro.raw.svg';
 
 // #region component
 const propTypes = {
@@ -91,6 +93,8 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
 
   // paste the raw SVG path data or the entire SVG as an object:
   registerRawSvg('custom:onshape', onshapeSvg);
+  registerRawSvg('custom:viscofan', viscofanSvg);
+  registerRawSvg('custom:sploro', sploroSvg);
 
   // Set main projects state
   React.useEffect(() => {
