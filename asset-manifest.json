@@ -1,12 +1,14 @@
 {
   "files": {
-    "main.css": "/CV/static/css/main.f3612727.css",
-    "main.js": "/CV/static/js/main.547803a2.js",
+    "main.css": "/CV/static/css/main.1a3ab3c0.css",
+    "main.js": "/CV/static/js/main.3f1e4657.js",
+    "static/media/Projects_Igor_Volodimir_Vons_Vons_modifiable.docx": "/CV/static/media/Projects_Igor_Volodimir_Vons_Vons_modifiable.536e6b973aeb7d37a991.docx",
     "static/media/Resume_Projects_Igor_Volodimir_Vons_Vons.pdf": "/CV/static/media/Resume_Projects_Igor_Volodimir_Vons_Vons.4c607f9e9c7940085683.pdf",
     "static/media/hero-dark.jpg": "/CV/static/media/hero-dark.37f2556d620821979e99.jpg",
     "static/media/cell_conquest_game.jpg": "/CV/static/media/cell_conquest_game.b4a8c0ba04cccf2cfee9.jpg",
     "static/media/hero-light.jpg": "/CV/static/media/hero-light.78b77836d8aee4d7d3cb.jpg",
     "static/media/artistry_page.jpg": "/CV/static/media/artistry_page.28cdd7cbbb50aba69b9a.jpg",
+    "static/media/Resume_Igor_Volodimir_Vons_Vons_modifiable.docx": "/CV/static/media/Resume_Igor_Volodimir_Vons_Vons_modifiable.b6e8d9bb9993d66babe5.docx",
     "static/media/dataset_analysis.jpg": "/CV/static/media/dataset_analysis.86823b127e9077fe512a.jpg",
     "static/media/template.jpg": "/CV/static/media/template.9211b09ddfb2b7c257d1.jpg",
     "static/media/kronis_landing.jpg": "/CV/static/media/kronis_landing.63627f4c6a96e62150d6.jpg",
@@ -25,11 +27,11 @@
     "static/media/defaultNavLogo.svg": "/CV/static/media/defaultNavLogo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "static/media/logo.svg": "/CV/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/CV/index.html",
-    "main.f3612727.css.map": "/CV/static/css/main.f3612727.css.map",
-    "main.547803a2.js.map": "/CV/static/js/main.547803a2.js.map"
+    "main.1a3ab3c0.css.map": "/CV/static/css/main.1a3ab3c0.css.map",
+    "main.3f1e4657.js.map": "/CV/static/js/main.3f1e4657.js.map"
   },
   "entrypoints": [
-    "static/css/main.f3612727.css",
-    "static/js/main.547803a2.js"
+    "static/css/main.1a3ab3c0.css",
+    "static/js/main.3f1e4657.js"
   ]
 }
