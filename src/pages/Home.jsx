@@ -5,6 +5,7 @@ import { useGetUsersQuery } from "../app/apiSlice";
 import Hero from "../components/Hero";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";
+import AcademicTimeline from "../components/AcademicTimeline"
 import ProfessionalExperience from "../components/ProfessionalExperience";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
@@ -35,6 +36,7 @@ const Home = () => {
           languages={Data.languages}
         />
         <Skills />
+        <AcademicTimeline />
         <ProfessionalExperience />
         <Projects filteredProjects={filteredProjects} />
         <Contact />

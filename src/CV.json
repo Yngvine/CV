@@ -51,6 +51,7 @@
       "level": "Secondary Compulsory Education (ESO)",
       "institution": "IES Barañain, Barañain",
       "location": "Barañain, Navarra, Spain",
+      "institution_logo": "custom:iesbaranain",
       "start_date": "Sep 2014",
       "end_date": "Jun 2018"
     },
@@ -58,6 +59,7 @@
       "level": "High School (Bachillerato) in Science & Engineering",
       "institution": "IES Barañain, Barañain",
       "location": "Barañain, Navarra, Spain",
+      "institution_logo": "custom:iesbaranain",
       "start_date": "Sep 2018",
       "end_date": "Jul 2020"
     },
@@ -65,12 +67,14 @@
       "level": "Erasmus+ Program",
       "institution": "Zespół Szkół Urszulańskich w Rybniku (Ursulines School Complex in Rybnik)",
       "location": "Rybnik, Silesia, Poland",
+      "institution_logo": "custom:zsuwr",
       "date": "Mar 2018"
     },
     {
       "level": "Bachelor’s degree in Computer Science/Informatics Engineering",
       "institution": "Public University of Navarre (UPNA), Pamplona",
       "location": "Pamplona, Navarra, Spain",
+      "institution_logo": "custom:upna",
       "start_date": "Sep 2020",
       "end_date": "Jun 2024"
     },
@@ -78,6 +82,7 @@
       "level": "Erasmus+ Program",
       "institution": "Blekinge Tekniska Högskola (Blekinge Institute of Technology)",
       "location": "Karlskrona, Blekinge, Sweden",
+      "institution_logo": "custom:bth",
       "start_date": "Jan 2024",
       "end_date": "Jun 2024"
     }
@@ -415,7 +420,7 @@
       "id": 14,
       "title": "Numismatics project",
       "images": ["images/coinchip_app.jpg"],
-      "year": "2024",
+      "year": "2024-2025",
       "description": "3D printing project aimed at preserving numismatic items with replicable, scalable tools and designs. Developed a desktop app for viewing and processing 3D models using CadQuery and VTK.",
       "skills": ["Python", "PySide6", "VTK", "CadQuery"],
       "links": ["https://github.com/Yngvine/CoinChipApp"],
@@ -425,7 +430,7 @@
     {
       "id": 15,
       "title": "Mountain Shelters Website",
-      "year": "2024",
+      "year": "2024-2025",
       "description": "Collaborative .NET + React web project to map and manage information about mountain shelters. Used EF, SQLite, dynamic filters, and mapping features.",
       "skills": [".NET", "ASP.NET", "Flask", "React"],
       "links": [
@@ -441,7 +446,7 @@
       "year": "2025",
       "description": "Create a website to showcase the resume and projects in an accessible format.",
       "type": "personal",
-      "status": "future"
+      "status": "in progress"
     },
     {
       "id": 17,

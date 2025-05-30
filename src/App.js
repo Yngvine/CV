@@ -32,9 +32,9 @@ import Footer from "./components/Footer";
 import { footerTheme, navLogo } from "./config";
 // Util
 import { getStoredTheme, getPreferredTheme, setTheme, registerRawSvg } from "./utils";
-import onshapeSvg from './images/onshape.raw.svg';
-import viscofanSvg from './images/viscofan.raw.svg';
-import sploroSvg from './images/sploro.raw.svg';
+// grab every “*.raw.svg” from /src/images
+const svgs = require.context("./images", false, /\.raw\.svg$/);
+
 
 // #region component
 const propTypes = {
@@ -92,10 +92,18 @@ const App = ({ projectCardImages = [], filteredProjects = [] }) => {
   }, [projectsData, projectCardImages, dispatch]);
 
   // paste the raw SVG path data or the entire SVG as an object:
-  registerRawSvg('custom:onshape', onshapeSvg);
-  registerRawSvg('custom:viscofan', viscofanSvg);
-  registerRawSvg('custom:sploro', sploroSvg);
 
+  svgs.keys().forEach((filePath) => {
+    // filePath is like "./viscofan.raw.svg"
+    const name = filePath
+      .replace(/^.\//, "")               // drop the leading “./”
+      .replace(/\.raw\.svg$/, "")        // drop the extension
+      .toLowerCase();                    // normalize
+    const svgContent = svgs(filePath).default; // raw string export
+    console.log('regustering ', name);
+    registerRawSvg(`custom:${name}`, svgContent);
+  });
+  
   // Set main projects state
   React.useEffect(() => {
     if (projects.length !== 0) {

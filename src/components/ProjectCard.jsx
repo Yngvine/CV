@@ -106,6 +106,17 @@ const StyledCard = styled.div`
 `;
 // #endregion
 
+function renderIcon(status){
+  switch (status) {
+      case "finished":
+        return <Icon icon="ic:baseline-check-circle" />;
+      case "in progress":
+        return <Icon icon="ic:baseline-pending-actions" />;
+      case "future":
+        return <Icon icon="typcn:lightbulb" />;
+  }
+}
+
 // #region component
 const propTypes = {
   demo: PropTypes.string,
@@ -147,7 +158,7 @@ const ProjectCard = ({ demo, description, image, name, period, status, id }) => 
           )}
           {status && (
             <Card.Link>
-              <Icon icon="ic:baseline-check-circle" /> {status}
+              {renderIcon(status)} {status}
             </Card.Link>
           )}
         </Card.Footer>
