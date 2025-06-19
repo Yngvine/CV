@@ -62,7 +62,7 @@ const StyledSection = styled.section`
 const ProjectView = () => {
   const { id } = useParams();
   console.log(id);
-  const project = Data.projects[parseInt(id) - 1];
+  const project = Data.projects.find((project) => project.id === parseInt(id))
 
   useEffect(() => {
     console.log("Current theme attr:", document.body.getAttribute("data-bs-theme"));
