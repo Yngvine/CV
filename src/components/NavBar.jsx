@@ -10,7 +10,8 @@ import { Link, useLocation } from "react-router-dom";
 import defaultLogo from "../images/defaultNavLogo.svg";
 // Components
 import { Link as ScrollLink } from "react-scroll";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Dropdown  } from "react-bootstrap";
+import { Icon } from "@iconify/react";
 import ThemeToggle from "./ThemeToggle";
 
 // #region constants
@@ -42,6 +43,27 @@ const StyledDiv = styled.div`
   .logo-img {
     background: ${({ theme }) =>
       theme.name === "light" ? "var(--bs-dark)" : "var(--bs-light)"};
+  }
+  #dropdown-basic {
+    background: ${({ theme }) =>
+      theme.name === "light" ? "var(--bs-light)" : "var(--bs-dark)"};
+    border-color: ${({ theme }) =>
+      theme.name === "light" ? "var(--bs-dark)" : "var(--bs-light)"};
+    color: inherit;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+    /* Default: horizontal layout */
+    margin-right: 1rem;
+    margin-bottom: 0;
+
+    /* Responsive: vertical layout on small screens */
+    @media (max-width: 1199px) { /* Current breakpoint */
+      margin-right: 0;
+      margin-bottom: 0.75rem;
+    }
+  }
+  .dropdown-toggle::after {
+    display: none !important;
   }
 `;
 // #endregion
@@ -127,6 +149,19 @@ const NavBar = ({ Logo = defaultLogo, callBack, closeDelay = 125 }) => {
                       </Nav.Item>
                     );
                   })}
+            </Nav>
+            <Nav>
+              <Dropdown>
+                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                  Download CV <Icon icon="material-symbols-light:download-rounded" height="1.5rem" width="1.5rem" />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#">CV</Dropdown.Item>
+                  <Dropdown.Item href="#">Projects</Dropdown.Item>
+                  <Dropdown.Item href="#">CV + Projects</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Nav>
             <Nav>
               <ThemeToggle
