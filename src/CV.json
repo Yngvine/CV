@@ -208,7 +208,10 @@
         "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Review_classification"
       ],
       "type": "academic",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "47.2mm"
+      }
     },
     {
       "id": 2,
@@ -226,7 +229,10 @@
         "https://www.kaggle.com/datasets/fedesoriano/company-bankruptcy-prediction"
       ],
       "type": "academic",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "33mm"
+      }
     },
     {
       "id": 3,
@@ -243,7 +249,10 @@
         "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Image_classification"
       ],
       "type": "academic",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "43.1mm"
+      }
     },
     {
       "id": 4,
@@ -257,7 +266,10 @@
         "https://www.kaggle.com/datasets/muratkokludataset/acoustic-extinguisher-fire-dataset"
       ],
       "type": "academic",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "48.1mm"
+      }
     },
     {
       "id": 5,
@@ -275,7 +287,10 @@
         "https://github.com/Yngvine/Small-projects/tree/83bfe35b37556bbed4a6303d688e5abb41c6b7e1/Cell_conquest_game"
       ],
       "type": "academic",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "81.3mm"
+      }
     },
     {
       "id": 6,
@@ -295,7 +310,10 @@
       ],
       "links": ["https://apidocs.emtmadrid.es"],
       "type": "academic",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "19.3mm"
+      }
     },
     {
       "id": 7,
@@ -317,7 +335,10 @@
       ],
       "links": ["https://github.com/Yngvine/AIshoppingweb"],
       "type": "academic",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "104.8mm"
+      }
     },
     {
       "id": 8,
@@ -337,7 +358,10 @@
         "https://github.com/Yngvine/Calculator"
       ],
       "type": "personal",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "31.5mm"
+      }
     },
     {
       "id": 9,
@@ -353,7 +377,10 @@
       ],
       "links": ["https://www.instagram.com/caelusproject/?hl=es"],
       "type": "personal",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "50.5mm"
+      }
     },
     {
       "id": 10,
@@ -375,7 +402,10 @@
         "https://github.com/Yngvine/Small-projects/tree/21e1e4aa40bea68cc2d3b71e2cb50242217588cf/Sand_Difussion"
       ],
       "type": "other",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "73.1mm"
+      }
     },
     {
       "id": 11,
@@ -397,7 +427,10 @@
       ],
       "links": ["https://kronis.app"],
       "type": "other",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "71mm"
+      }
     },
     {
       "id": 13,
@@ -414,7 +447,10 @@
       ],
       "links": ["https://github.com/Ninjalice/ROBOARM"],
       "type": "other",
-      "status": "finished"
+      "status": "finished",
+      "word_info": {
+        "img_height": "58.7mm"
+      }
     },
     {
       "id": 14,
@@ -425,7 +461,10 @@
       "skills": ["Python", "PySide6", "VTK", "CadQuery"],
       "links": ["https://github.com/Yngvine/CoinChipApp"],
       "type": "personal",
-      "status": "in progress"
+      "status": "in progress",
+      "word_info": {
+        "img_height": "60.2mm"
+      }
     },
     {
       "id": 15,
@@ -452,7 +491,7 @@
       "id": 17,
       "title": "Further Studies: AI Master",
       "year": "2025–2026",
-      "description": "Pursue an AI Master’s degree offered by UPNA for the 2025-2026 academic year to deepen knowledge of machine learning, AI systems, and ethical application.",
+      "description": "Pursue an AI Master's degree offered by UPNA for the 2025-2026 academic year to deepen knowledge of machine learning, AI systems, and ethical application.",
       "institution": "UPNA",
       "type": "academic",
       "status": "future"
