@@ -137,7 +137,12 @@ const TimelineAxis = ({ startDate, endDate }) => {
   const totalRows = months.length * 2 - 1;
   const rowHeight = SPACING / 2;
   const rowTemplate = `repeat(${totalRows}, ${rowHeight}px)`;
-  const laneOrder = ["CL","CR","OL","OR"];
+  
+  const laneOrder = [];
+  if (lanes.left > 1) laneOrder.push("OL");
+  laneOrder.push("CL");
+  laneOrder.push("CR");
+  if (lanes.right > 1) laneOrder.push("OR");
 
   // 1) build metadata for each event: startRow, endRow, length
   const blobsMeta = events.map(evt => {
@@ -184,91 +189,96 @@ const TimelineAxis = ({ startDate, endDate }) => {
     }
   }
 
-  console.log(M);
-
   // 3) prepare lane membership
   const laneMembers = { CL: [], CR: [], OL: [], OR: [] };
   const eventBlobs = [];
   
   // 5) fraction overlap of a by b
   function overlapFrac(a,b){
-    return M[a,b]
+    return M[a][b]
   }
 
-  // 6) canPlace check = zero‐overlap + coverage‐sum rules
-  function canPlace(idx, L) {
-    const members = laneMembers[L];  // array of blob‐indexes
-    // 1) zero‐overlap sum
-    const sumOv = members.reduce(
-      (sum, j) => sum + M[idx][j] + M[j][idx], //REDUNDANT? one direction should be enough
+  function laneOverlapConflict(blob, targetLane){
+    const currentLaneMembers = laneMembers[targetLane];  
+    const sumOv = currentLaneMembers.reduce(
+      (sum, j) => sum + overlapFrac(blob, j),
       0
     );
-    if (sumOv !== 0) return false;
-
-    // 2) coverage‐sum rules
-    const newLaneMembers = [...members, idx];
-    if (L === "OL" || L === "OR") {
-      const centerL = L === "OL" ? "CL" : "CR";
-      const centerCovered = laneMembers[centerL].some(centerIdx => {
-        const coverSum = newLaneMembers
-          .reduce((sum, dIdx) => sum + M[centerIdx][dIdx], 0);
-        return coverSum >= 1;
-      });
-      console.log(idx, " sumCov1: ");
-      if (centerCovered) return false;
-    }
-    if (L === "CL" || L === "CR") {
-      const outerL = L === "CL" ? "OL" : "OR";
-      const sumCov = laneMembers[outerL].reduce(
-        (sum, j) => sum + M[idx][j],
-        0
-      );
-      console.log(idx, " sumCov2: ", sumCov);
-      if (sumCov >= 1) return false;
-    }
-
-    return true;
+    return sumOv !== 0;
   }
 
-
-  // 7) group‐push operation
-  function tryGroupPush(C, fromLane){
-    for(const target of laneOrder){
-      if(target === fromLane) continue;
-      // every member can move into target?
-      const ok = C.every(c => canPlace(c, target));
-      if(ok){
-        C.forEach(c=>{
-          laneMembers[fromLane] = laneMembers[fromLane].filter(x=>x!==c);
-          laneMembers[target].push(c);
-        });
-        return true;
-      }
+  function laneCoverageConflict(blobs, targetLane){
+    const potentialLaneMembers = [...laneMembers[targetLane], ...blobs];
+    if (targetLane.startsWith("O")) {
+      const centerL = "C" + targetLane[1];
+      const centerCovered = laneMembers[centerL].some(centerIdx => {
+        const coverSum = potentialLaneMembers
+          .reduce((sum, outerIdx) => sum + overlapFrac(centerIdx, outerIdx), 0);
+        return coverSum >= 1;
+      });
+      if (centerCovered) return true;
+    } else if (targetLane.startsWith("C")) {
+      const outerL = "O" + targetLane[1];
+      const centerCovered = potentialLaneMembers.some(centerIdx => {
+        const coverSum = laneMembers[outerL]
+          .reduce((sum, outerIdx) => sum + overlapFrac(centerIdx, outerIdx), 0);
+        return coverSum >= 1;
+      });
+      if (centerCovered) return true;
     }
     return false;
   }
 
+  // 6) canPlace check = zero‐overlap + coverage‐sum rules
+  function canPlace(blob, targetLane) {
+    return !laneOverlapConflict(blob, targetLane) && !laneCoverageConflict([blob], targetLane);
+  }
+
+
+  // 7) group‐push operation
+  function tryMoveGroupElsewhere(conflictGroup, fromLane, conflictingBlob){
+    for(const targetLane of laneOrder){
+      if(targetLane === fromLane) continue;
+      // can every member move into target simultaneously?
+      if(conflictGroup.any(idx => laneOverlapConflict(idx, targetLane)))
+        continue;
+      // would the move cause coverage conflict?
+      if(laneCoverageConflict(conflictGroup, targetLane))
+        continue;
+      // would the move allow the conflicting blob to be placed?
+      if(laneCoverageConflict(conflictingBlob,targetLane))
+        continue;
+      // commit the move
+      for(const idx of conflictGroup)
+        laneMembers[targetLane].push(idx);
+      laneMembers[fromLane] = laneMembers[fromLane].filter(idx => !conflictGroup.includes(idx));
+      return true;      
+      }
+    
+    return false;
+  }
+
   // 8) group‐swap: only if blob longer than all in C
-  function tryGroupSwap(blob, C, fromLane) {
-    const laneOrder = ["CL","CR","OL","OR"];
+  function tryGroupSwap(blob, conflictGroup, fromLane) {
 
     for (const targetLane of laneOrder) {
       if (targetLane === fromLane) continue;
 
-      // 0) Check if blob can be placed in targetLane
-      if (!canPlace(blob, targetLane)) continue;
+      // 0) Check if blob can be stuffed in targetLane
+      if (laneOverlapConflict(blob, targetLane))
+        continue;
 
       // 1) Identify secondary group D in targetLane overlapping C
-      const D = laneMembers[targetLane].filter(dIdx =>
-        C.some(c => M[c][dIdx] + M[dIdx][c] > 0)
+      const conflictGroup2 = laneMembers[targetLane].filter(dIdx =>
+        conflictGroup.some(cIdx => M[cIdx][dIdx] > 0)
       );
-      if (D.length === 0) continue;
+      conflictGroup2 = [...conflictGroup2, blob];
 
       const emptiedTargetMembers = laneMembers[targetLane].filter(
-        idx => !D.includes(idx)
+        idx => !conflictGroup2.includes(idx)
       )
       const emptiedFromMembers = laneMembers[fromLane].filter(
-        idx => !C.includes(idx)
+        idx => !conflictGroup.includes(idx)
       )
 
       // 2) Compute the would‑be new lane compositions
@@ -276,37 +286,39 @@ const TimelineAxis = ({ startDate, endDate }) => {
         // all existing members except those in D
         ...emptiedTargetMembers,
         // plus all of C
-        ...C, 
-        // plus the blob
-        blob
+        ...conflictGroup
       ];
       const newFromMembers = [
         ...emptiedFromMembers,
-        ...D
+        ...conflictGroup2
       ];
 
       // --- Zero‑overlap checks on entire groups ---
 
-      // 3) Zero‐overlap for C in newTargetMembers
-      const zeroOvC = C.every(c =>
-        emptiedTargetMembers.every(p => (M[c][p] + M[p][c]) === 0)
+      // 3) Zero‐overlap for C in newTargetMembers PROBABLY REDUNDANT
+      const zeroOvC = conflictGroup.every(cIdx =>
+        emptiedTargetMembers.every(p => M[cIdx][p] === 0)
       );
       if (!zeroOvC) continue;
 
       // 4) Zero‐overlap for D in newFromMembers
-      const zeroOvD = D.every(dIdx =>
-        emptiedFromMembers.every(p => (M[dIdx][p] + M[p][dIdx]) === 0)
+      const zeroOvD = conflictGroup2.every(dIdx =>
+        emptiedFromMembers.every(p => M[dIdx][p] === 0)
       );
       if (!zeroOvD) continue;
 
       // --- Coverage rules on post‑swap lanes ---
 
       // 5) Moving C into targetLane: check no center blob fully covered
-      if (targetLane === "OL" || targetLane === "OR") {
+      if (targetLane.startsWith("O")) {
         // new outer lane is newTargetMembers
-        const centerLane = targetLane === "OL" ? "CL" : "CR";
+        const centerLane = "C" + targetLane[1];
+        const centerLaneMembers = laneMembers[centerLane];
+        if (centerLane === fromLane)
+          centerLaneMembers = [...centerLaneMembers, ...conflictGroup2];
+          
         // for each center blob, sum coverage by new outer lane
-        const centerCovered = laneMembers[centerLane].some(centerIdx => {
+        const centerCovered = centerLaneMembers.some(centerIdx => {
           const coverSum = newTargetMembers
             .reduce((sum, cIdx) => sum + M[cIdx][centerIdx], 0);
           return coverSum >= 1;
@@ -314,8 +326,12 @@ const TimelineAxis = ({ startDate, endDate }) => {
         if (centerCovered) continue;
       } else {
         // moving into CL/CR: new center lane is newTargetMembers
-        const outerLane = targetLane === "CL" ? "OL" : "OR";
-        const outerCovered = laneMembers[outerLane].some(outerIdx => {
+        const outerLane = "O" + targetLane[1];
+        const outerLaneMembers = laneMembers[outerLane];
+        if (outerLane === fromLane)
+          outerLaneMembers = [...outerLaneMembers, ...conflictGroup2];
+        
+        const outerCovered = outerLaneMembers.some(outerIdx => {
           const coverSum = newTargetMembers
             .reduce((sum, cIdx) => sum + M[cIdx][outerIdx], 0);
           return coverSum >= 1;
@@ -324,10 +340,13 @@ const TimelineAxis = ({ startDate, endDate }) => {
       }
 
       // 6) Moving D into fromLane: check no center blob fully covered
-      if (fromLane === "OL" || fromLane === "OR") {
-        // new outer lane is newFromMembers
-        const centerLane = fromLane === "OL" ? "CL" : "CR";
-        const centerCovered = laneMembers[centerLane].some(centerIdx => {
+      if (fromLane.startsWith("O")) {
+        const centerLane = "C" + fromLane[1];
+        const centerLaneMembers = laneMembers[centerLane];
+        if (centerLane === targetLane)
+          centerLaneMembers = [...centerLaneMembers, ...conflictGroup];
+        
+        const centerCovered = centerLaneMembers.some(centerIdx => {
           const coverSum = newFromMembers
             .reduce((sum, dIdx) => sum + M[dIdx][centerIdx], 0);
           return coverSum >= 1;
@@ -335,8 +354,13 @@ const TimelineAxis = ({ startDate, endDate }) => {
         if (centerCovered) continue;
       } else {
         // moving into CL/CR: new center lane is newFromMembers
-        const outerLane = fromLane === "CL" ? "OL" : "OR";
-        const outerCovered = laneMembers[outerLane].some(outerIdx => {
+        
+        const outerLane = "O" + fromLane[1];
+        const outerLaneMembers = laneMembers[outerLane];
+        if (outerLane === targetLane)
+          outerLaneMembers = [...outerLaneMembers, ...conflictGroup];
+          
+        const outerCovered = outerLaneMembers.some(outerIdx => {
           const coverSum = newFromMembers
             .reduce((sum, dIdx) => sum + M[dIdx][outerIdx], 0);
           return coverSum >= 1;
@@ -353,27 +377,6 @@ const TimelineAxis = ({ startDate, endDate }) => {
     return false;
   }
 
-
-  // 9) recursive placement helper for back‑placing swaps
-  function placeBlob(blob){
-    for(const L of laneOrder){
-      if(canPlace(blob.l_id,L)){
-        laneMembers[L].push(blob);
-        eventBlobs.push(
-          <EventBlob
-            key={blob.id}
-            startRow={blob.startRow}
-            endRow={blob.endRow}
-            isPoint={blob.isPoint}
-            rowHeight={SPACING}
-            lane={ (L==="CL"? lanes.left : L==="CR"? lanes.left+2 : L==="OL"? 1 : lanes.left+2+1) }
-          />
-        );
-        return true;
-      }
-    }
-    return false;
-  }
 
   // 10) Main placement loop
   for(const blob of blobsMeta){
@@ -392,11 +395,12 @@ const TimelineAxis = ({ startDate, endDate }) => {
 
     // 10.2 Conflict resolution on first conflicting lane
     for(const L of laneOrder){
-      const C = laneMembers[L].filter(m => overlapFrac(blob,m)+overlapFrac(m,blob)>0);
-      if(C.length===0) continue;
+      if(!laneOverlapConflict(blob.l_id, L))
+        continue;
+      const conflictGroup = laneMembers[L].filter(idx => overlapFrac(blob.l_id,idx) > 0);
 
       // 10.2.1 Try group-push
-      if(tryGroupPush(C, L)){
+      if(tryMoveGroupElsewhere(conflictGroup, L)){
         // now place blob
         laneMembers[L].push(blob);
         placed = true;
@@ -405,7 +409,7 @@ const TimelineAxis = ({ startDate, endDate }) => {
       }
 
       // 10.2.2 Try group-swap
-      if(tryGroupSwap(blob, C, L)){
+      if(tryGroupSwap(blob, conflictGroup, L)){
         placed = true;
         console.log("placed", blob.id, "in", L, "after group-swap");
         break;
