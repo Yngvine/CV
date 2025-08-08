@@ -135,6 +135,37 @@ const SideBlockGroupContainer = styled.div`
   align-self: start;
 `;
 
+const ConnectorLine = styled.div`
+  position: absolute;
+  height: 2px;
+  background: ${({ theme }) => (theme.name === "light" ? "#007bff" : "#66b2ff")};
+  opacity: 0.6;
+  z-index: 1;
+  transform-origin: left center;
+`;
+
+const ConnectionContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+`;
+
+const ConnectionSVG = styled.svg`
+  position: absolute;
+  top: 0;
+  left: -250px; /* Extend to cover side cards */
+  width: calc(100% + 500px); /* Extend width to cover both sides */
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+`;
+
 // #endregion
 
 function groupByAnkerPoint_s(blobs) {
@@ -208,8 +239,10 @@ function groupByAnkerPoint(blobs){
     const group2 = groups.find(group => group.items.includes(pair[1]));
     if (group1 && group2) {
       if (group1 !== group2) {
+        // Merge groups keeping the original  card order
         group1.items = group1.items.concat(group2.items);
         groups.splice(groups.indexOf(group2), 1);
+        group1.items.sort((a, b) => blobs.find(blob => blob.id === a.id).ankerPoint - blobs.find(blob => blob.id === b.id).ankerPoint);
         group1.avgRow = Math.floor(
           (
           Math.max(...group1.items.map(card => blobs.find(blob => blob.id === card.id).ankerPoint))
@@ -223,6 +256,7 @@ function groupByAnkerPoint(blobs){
       }
     } else if (group1) {
       group1.items.push(pair[1]);
+      group1.items.sort((a, b) => blobs.find(blob => blob.id === a.id).ankerPoint - blobs.find(blob => blob.id === b.id).ankerPoint);
       group1.avgRow = Math.floor(
         (
         Math.max(...group1.items.map(card => blobs.find(blob => blob.id === card.id).ankerPoint))
@@ -235,6 +269,7 @@ function groupByAnkerPoint(blobs){
       group1.head = group1.avgRow - Math.floor(group1.tlength / 2);
     } else if (group2) { 
       group2.items.push(pair[0]);
+      group2.items.sort((a, b) => blobs.find(blob => blob.id === a.id).ankerPoint - blobs.find(blob => blob.id === b.id).ankerPoint);
       group2.avgRow = Math.floor(
         (
         Math.max(...group2.items.map(card => blobs.find(blob => blob.id === card.id).ankerPoint))
@@ -718,6 +753,107 @@ const TimelineAxis = ({ startDate, endDate }) => {
   const leftGroups = groupByAnkerPoint(leftBlobs);
   const rightGroups = groupByAnkerPoint(rightBlobs);
 
+  // Function to calculate connection lines
+  const calculateConnectionLines = () => {
+    const connections = [];
+    
+    // Helper function to get blob position in the timeline
+    const getBlobPosition = (blob) => {
+      const blobLane = laneOrder.find((L) => laneMembers[L].includes(blob.l_id));
+      let laneColumn;
+      
+      // Match the lane calculation from EventBlob rendering
+      if (blobLane === "CL") laneColumn = lanes.left;
+      else if (blobLane === "CR") laneColumn = lanes.left + 2;
+      else if (blobLane === "OL") laneColumn = 1;
+      else if (blobLane === "OR") laneColumn = lanes.left + 2 + 1;
+      
+      const centerRow = blob.ankerPoint || Math.floor((blob.startRow + blob.endRow) / 2);
+      
+      // Calculate position relative to extended SVG (250px offset + timeline position)
+      const gridColumnPosition = (laneColumn - 1) * (40 + 8) +(89.875-(40))*Math.floor(laneColumn/3); // 40px column + 0.5rem gap (8px) HARDCODED TODO: make dynamic
+      const blobCenterX = 250 + gridColumnPosition + 20; // SVG offset + grid position + half blob width
+      const blobCenterY = (centerRow - 1) * (SPACING / 2) + (SPACING / 4); // Convert to actual pixel position
+      
+      return {
+        x: blobCenterX,
+        y: blobCenterY,
+      };
+    };
+
+    // Helper function to get card center position
+    const getCardPosition = (group, cardIndex, isLeft) => {
+      const cardCenterRow = group.items[cardIndex].center;
+      const cardY = (cardCenterRow - 1) * (SPACING / 2) + (SPACING / 4); // Match blob Y calculation
+      
+      // Calculate card center X position relative to extended SVG
+      // Left cards: 250px (SVG extension) - 180px (card distance) + 90px (half card width)
+      // Right cards: 250px (SVG extension) + timeline width + gap + 90px (half card width)
+      const timelineWidth = (lanes.left + lanes.right + 1) * 40 + (lanes.left + lanes.right) * 8; // columns + gaps
+      const cardCenterX = isLeft 
+        ? 250 - 180 + 90  // 160px from left edge of extended SVG
+        : 250 + timelineWidth + 32 + 90; // timeline + gap + half card width
+      
+      return { x: cardCenterX, y: cardY };
+    };
+
+    // Calculate connections for left side
+    leftGroups.forEach((group) => {
+      group.items.forEach((card, cardIndex) => {
+        const blob = leftBlobs.find(b => b.id === card.id);
+        if (blob) {
+          const blobPos = getBlobPosition(blob);
+          const cardPos = getCardPosition(group, cardIndex, true);
+          
+          console.log(`Left connection for blob ${blob.id}:`, {
+            blobPos,
+            cardPos,
+            blobLane: laneOrder.find((L) => laneMembers[L].includes(blob.l_id)),
+            ankerPoint: blob.ankerPoint
+          });
+          
+          connections.push({
+            id: `left-${blob.id}`,
+            startX: cardPos.x,
+            startY: cardPos.y,
+            endX: blobPos.x,
+            endY: blobPos.y,
+          });
+        }
+      });
+    });
+
+    // Calculate connections for right side
+    rightGroups.forEach((group) => {
+      group.items.forEach((card, cardIndex) => {
+        const blob = rightBlobs.find(b => b.id === card.id);
+        if (blob) {
+          const blobPos = getBlobPosition(blob);
+          const cardPos = getCardPosition(group, cardIndex, false);
+          
+          console.log(`Right connection for blob ${blob.id}:`, {
+            blobPos,
+            cardPos,
+            blobLane: laneOrder.find((L) => laneMembers[L].includes(blob.l_id)),
+            ankerPoint: blob.ankerPoint
+          });
+          
+          connections.push({
+            id: `right-${blob.id}`,
+            startX: blobPos.x,
+            startY: blobPos.y,
+            endX: cardPos.x,
+            endY: cardPos.y,
+          });
+        }
+      });
+    });
+
+    return connections;
+  };
+
+  const connectionLines = calculateConnectionLines();
+
   const sideLeftBlocks = leftGroups.map((group, i) => (
     <SideBlockGroupContainer key={`left-group-${i}`} startRow={group.head}>
       {group.items.map((blob) => (
@@ -783,6 +919,45 @@ const TimelineAxis = ({ startDate, endDate }) => {
       <SideColumn rowTemplate={rowTemplate}>{sideLeftBlocks}</SideColumn>
       <TimelineWrapper style={{ gridTemplateRows: rowTemplate }} lanes={lanes}>
         <VerticalLine lanes={lanes} />
+
+        {/* Connection lines */}
+        <ConnectionContainer>
+          <ConnectionSVG>
+            {connectionLines.map((connection) => (
+              <g key={connection.id}>
+                {/* Connection line */}
+                <line
+                  x1={connection.startX}
+                  y1={connection.startY}
+                  x2={connection.endX}
+                  y2={connection.endY}
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeOpacity="0.6"
+                  strokeDasharray="5,5"
+                  style={{
+                    color: `var(--bs-primary, #007bff)`,
+                  }}
+                />
+                {/* Debug circles to show connection points */}
+                <circle
+                  cx={connection.startX}
+                  cy={connection.startY}
+                  r="3"
+                  fill="red"
+                  opacity="0.7"
+                />
+                <circle
+                  cx={connection.endX}
+                  cy={connection.endY}
+                  r="3"
+                  fill="blue"
+                  opacity="0.7"
+                />
+              </g>
+            ))}
+          </ConnectionSVG>
+        </ConnectionContainer>
 
         {months.flatMap((date, i) => {
           const isJanuary = date.getMonth() === 0;
