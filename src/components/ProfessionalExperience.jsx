@@ -106,7 +106,7 @@ const ProfessionalExperience = () => {
   
   
   return (
-    <Element name={"Experience"} id="about">
+    <Element name={"Experience"} id="experience">
       <StyledProfessionalExperience className="section" 
         style={{ "--svg-max-width": maxWidth ? `${maxWidth}px` : undefined }}>
         <Container>
