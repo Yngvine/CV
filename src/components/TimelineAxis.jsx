@@ -2,10 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import { Element } from "react-scroll";
 import { Prev } from "react-bootstrap/esm/PageItem";
+import { Container } from "react-bootstrap";
+import Title from "./Title";
 
 // === CONFIGURABLE ===
-const NUM_LEFT_LANES = 2;
+const NUM_LEFT_LANES = 2; 
 const NUM_RIGHT_LANES = 2;
 const SPACING = 40; // px per full row
 
@@ -15,6 +18,9 @@ const MainLayout = styled.div`
   display: flex;
   gap: 2rem;
   justify-content: center;
+  width: 100%;
+  max-width: 100vw;
+  padding: 0 1rem;
 `;
 
 const TimelineWrapper = styled.div`
@@ -218,7 +224,7 @@ function spaceCardsInGroup(group) {
   const rowsPerCard = 5;
   const gRCenterIndex =  group.items.length / 2 - 0.5;
   for (let i = 0; i < group.items.length; i++)
-    group.items[i].center = group.avgRow + (group.items.indexOf(group.items[i]) - gRCenterIndex)*rowsPerCard;
+    group.items[i].center = Math.floor(group.avgRow + (group.items.indexOf(group.items[i]) - gRCenterIndex)*rowsPerCard);
 }
 
 function groupByAnkerPoint(blobs){
@@ -395,6 +401,12 @@ const TimelineAxis = ({ startDate, endDate }) => {
   const end = new Date(endDate);
   const months = getMonthsBetween(start, end);
   const lanes = { left: NUM_LEFT_LANES, right: NUM_RIGHT_LANES };
+
+  // Add refs to measure actual positions
+  const timelineWrapperRef = React.useRef(null);
+  const leftColumnRef = React.useRef(null);
+  const rightColumnRef = React.useRef(null);
+  const [measurements, setMeasurements] = React.useState(null);
 
   const totalRows = months.length * 2 - 1;
   const rowHeight = SPACING / 2;
@@ -738,6 +750,42 @@ const TimelineAxis = ({ startDate, endDate }) => {
 
   blobsMeta.map((blob) => (blob.ankerPoint = findBlobAnker(blob)));
 
+  // Effect to measure actual DOM positions
+  React.useEffect(() => {
+    const measurePositions = () => {
+      if (timelineWrapperRef.current && leftColumnRef.current && rightColumnRef.current) {
+        const timelineRect = timelineWrapperRef.current.getBoundingClientRect();
+        const leftRect = leftColumnRef.current.getBoundingClientRect();
+        const rightRect = rightColumnRef.current.getBoundingClientRect();
+        
+        // Also get the SVG position for debugging
+        const svgElement = timelineWrapperRef.current.querySelector('svg');
+        const svgRect = svgElement ? svgElement.getBoundingClientRect() : null;
+        
+        setMeasurements({
+          timelineLeft: timelineRect.left,
+          timelineWidth: timelineRect.width,
+          leftColumnLeft: leftRect.left,
+          leftColumnWidth: leftRect.width,
+          rightColumnLeft: rightRect.left,
+          rightColumnWidth: rightRect.width,
+          svgLeft: svgRect ? svgRect.left : null,
+          svgWidth: svgRect ? svgRect.width : null,
+        });
+      }
+    };
+
+    // Measure after render with a small delay to ensure everything is rendered
+    const timer = setTimeout(measurePositions, 100);
+    
+    // Remeasure on window resize
+    window.addEventListener('resize', measurePositions);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', measurePositions);
+    };
+  }, []);
+
 
   const leftBlobs = blobsMeta.filter(
     (b) =>
@@ -770,10 +818,35 @@ const TimelineAxis = ({ startDate, endDate }) => {
       
       const centerRow = blob.ankerPoint || Math.floor((blob.startRow + blob.endRow) / 2);
       
-      // Calculate position relative to extended SVG (250px offset + timeline position)
-      const gridColumnPosition = (laneColumn - 1) * (40 + 8) +(89.875-(40))*Math.floor(laneColumn/3); // 40px column + 0.5rem gap (8px) HARDCODED TODO: make dynamic
-      const blobCenterX = 250 + gridColumnPosition + 20; // SVG offset + grid position + half blob width
-      const blobCenterY = (centerRow - 1) * (SPACING / 2) + (SPACING / 4); // Convert to actual pixel position
+      let blobCenterX;
+      
+      if (measurements) {
+        // Use actual measurements when available
+        const svgLeft = measurements.svgLeft || (measurements.timelineLeft - 250);
+        
+        // Calculate blob position based on actual timeline measurements
+        const columnWidth = 40;
+        const gap = 8;
+        const centerColumnWidth = measurements.timelineWidth - (lanes.left + lanes.right) * (columnWidth + gap);
+        
+        if (laneColumn <= lanes.left) {
+          // Left side columns
+          const leftOffset = (laneColumn - 1) * (columnWidth + gap) + columnWidth / 2;
+          blobCenterX = measurements.timelineLeft - svgLeft + leftOffset;
+        } else {
+          // Right side columns
+          const leftSideWidth = lanes.left * (columnWidth + gap);
+          const rightColumnIndex = laneColumn - lanes.left - 1;
+          const rightOffset = leftSideWidth + centerColumnWidth + rightColumnIndex * (columnWidth + gap) + columnWidth / 2;
+          blobCenterX = measurements.timelineLeft - svgLeft + rightOffset;
+        }
+      } else {
+        // Fallback to your hardcoded calculation
+        const gridColumnPosition = (laneColumn - 1) * (40 + 8) + (89.875 - 40) * Math.floor(laneColumn / 3);
+        blobCenterX = 250 + gridColumnPosition + 20;
+      }
+      
+      const blobCenterY = (centerRow - 1) * (SPACING / 2) + (SPACING / 4);
       
       return {
         x: blobCenterX,
@@ -784,15 +857,32 @@ const TimelineAxis = ({ startDate, endDate }) => {
     // Helper function to get card center position
     const getCardPosition = (group, cardIndex, isLeft) => {
       const cardCenterRow = group.items[cardIndex].center;
+      console.log(`Card center row for ${group.items[cardIndex].id}:`, cardCenterRow);
       const cardY = (cardCenterRow - 1) * (SPACING / 2) + (SPACING / 4); // Match blob Y calculation
+      console.log(`Card Y position for ${group.items[cardIndex].id}:`, cardY);
       
-      // Calculate card center X position relative to extended SVG
-      // Left cards: 250px (SVG extension) - 180px (card distance) + 90px (half card width)
-      // Right cards: 250px (SVG extension) + timeline width + gap + 90px (half card width)
-      const timelineWidth = (lanes.left + lanes.right + 1) * 40 + (lanes.left + lanes.right) * 8; // columns + gaps
-      const cardCenterX = isLeft 
-        ? 250 - 180 + 90  // 160px from left edge of extended SVG
-        : 250 + timelineWidth + 32 + 90; // timeline + gap + half card width
+      let cardCenterX;
+      
+      if (measurements) {
+        // Use actual measurements when available
+        const svgLeft = measurements.svgLeft || (measurements.timelineLeft - 250);
+        
+        if (isLeft) {
+          // Left cards: center of left column relative to SVG
+          const leftColumnCenter = measurements.leftColumnLeft + measurements.leftColumnWidth / 2;
+          cardCenterX = leftColumnCenter - svgLeft;
+        } else {
+          // Right cards: center of right column relative to SVG
+          const rightColumnCenter = measurements.rightColumnLeft + measurements.rightColumnWidth / 2;
+          cardCenterX = rightColumnCenter - svgLeft;
+        }
+      } else {
+        // Fallback to estimated positions
+        const timelineWidth = (lanes.left + lanes.right + 1) * 40 + (lanes.left + lanes.right) * 8;
+        cardCenterX = isLeft 
+          ? 250 - 180 + 90  // 160px from left edge of extended SVG
+          : 250 + timelineWidth + 32 + 90; // timeline + gap + half card width
+      }
       
       return { x: cardCenterX, y: cardY };
     };
@@ -809,14 +899,16 @@ const TimelineAxis = ({ startDate, endDate }) => {
             blobPos,
             cardPos,
             blobLane: laneOrder.find((L) => laneMembers[L].includes(blob.l_id)),
-            ankerPoint: blob.ankerPoint
+            ankerPoint: blob.ankerPoint,
+            measurements,
+            usedMeasurements: !!measurements
           });
           
           connections.push({
             id: `left-${blob.id}`,
-            startX: cardPos.x,
+            startX: cardPos.x + 90, // Add half card width (180px/2) to get right edge of card
             startY: cardPos.y,
-            endX: blobPos.x,
+            endX: blobPos.x - 20, // Add half blob width (40px/2) to get right edge of blob
             endY: blobPos.y,
           });
         }
@@ -835,14 +927,16 @@ const TimelineAxis = ({ startDate, endDate }) => {
             blobPos,
             cardPos,
             blobLane: laneOrder.find((L) => laneMembers[L].includes(blob.l_id)),
-            ankerPoint: blob.ankerPoint
+            ankerPoint: blob.ankerPoint,
+            measurements,
+            usedMeasurements: !!measurements
           });
           
           connections.push({
             id: `right-${blob.id}`,
-            startX: blobPos.x,
+            startX: blobPos.x - 20, // Subtract half blob width (40px/2) to get left edge of blob
             startY: blobPos.y,
-            endX: cardPos.x,
+            endX: cardPos.x - 90, // Subtract half card width (180px/2) to get left edge of card
             endY: cardPos.y,
           });
         }
@@ -853,6 +947,19 @@ const TimelineAxis = ({ startDate, endDate }) => {
   };
 
   const connectionLines = calculateConnectionLines();
+
+  // Force re-render when measurements change
+  React.useEffect(() => {
+    if (measurements) {
+      // Trigger a re-calculation by forcing the component to update
+      // This ensures connection lines update when window resizes
+      console.log('Measurements updated:', {
+        ...measurements,
+        calculatedSvgLeft: measurements.svgLeft || (measurements.timelineLeft - 250),
+        displacement: measurements.svgLeft ? (measurements.timelineLeft - 250) - measurements.svgLeft : 'N/A'
+      });
+    }
+  }, [measurements]);
 
   const sideLeftBlocks = leftGroups.map((group, i) => (
     <SideBlockGroupContainer key={`left-group-${i}`} startRow={group.head}>
@@ -915,9 +1022,14 @@ const TimelineAxis = ({ startDate, endDate }) => {
     });
 
   return (
-    <MainLayout>
-      <SideColumn rowTemplate={rowTemplate}>{sideLeftBlocks}</SideColumn>
-      <TimelineWrapper style={{ gridTemplateRows: rowTemplate }} lanes={lanes}>
+    <Element name={"Timeline"} className="timeline">
+      <section className="section">
+        <Container className="d-flex justify-content-center">
+          <Title size={"h2"} text={"Timeline"} />
+        </Container>
+        <MainLayout>
+          <SideColumn ref={leftColumnRef} rowTemplate={rowTemplate}>{sideLeftBlocks}</SideColumn>
+          <TimelineWrapper ref={timelineWrapperRef} style={{ gridTemplateRows: rowTemplate }} lanes={lanes}>
         <VerticalLine lanes={lanes} />
 
         {/* Connection lines */}
@@ -938,21 +1050,6 @@ const TimelineAxis = ({ startDate, endDate }) => {
                   style={{
                     color: `var(--bs-primary, #007bff)`,
                   }}
-                />
-                {/* Debug circles to show connection points */}
-                <circle
-                  cx={connection.startX}
-                  cy={connection.startY}
-                  r="3"
-                  fill="red"
-                  opacity="0.7"
-                />
-                <circle
-                  cx={connection.endX}
-                  cy={connection.endY}
-                  r="3"
-                  fill="blue"
-                  opacity="0.7"
                 />
               </g>
             ))}
@@ -986,9 +1083,11 @@ const TimelineAxis = ({ startDate, endDate }) => {
         })}
 
         {eventBlobs}
-      </TimelineWrapper>
-      <SideColumn rowTemplate={rowTemplate}>{sideRightBlocks}</SideColumn>
-    </MainLayout>
+        </TimelineWrapper>
+        <SideColumn ref={rightColumnRef} rowTemplate={rowTemplate}>{sideRightBlocks}</SideColumn>
+        </MainLayout>
+      </section>
+    </Element>
   );
 };
 
