@@ -85,6 +85,14 @@
       "institution_logo": "custom:bth",
       "start_date": "Jan 2024",
       "end_date": "Jun 2024"
+    },
+    {
+      "level": "Master's degree in Machine Learning",
+      "institution": "Public University of Navarre (UPNA), Pamplona",
+      "location": "Pamplona, Navarra, Spain",
+      "institution_logo": "custom:upna",
+      "start_date": "Sep 2025",
+      "end_date": "Jun 2026"
     }
   ],
   "personal_interests": [
@@ -101,6 +109,12 @@
       "level": "Advanced",
       "level_num": 4,
       "icon": "logos:python"
+    },
+    {
+      "name": "PyTorch",
+      "level": "Intermediate",
+      "level_num": 3,
+      "icon": "logos:pytorch"
     },
     {
       "name": "Django",
