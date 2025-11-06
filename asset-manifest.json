@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CV/static/css/main.cdc29534.css",
-    "main.js": "/CV/static/js/main.91362232.js",
+    "main.js": "/CV/static/js/main.98713b12.js",
     "static/media/Resume_Projects_Igor_Volodimir_Vons_Vons.pdf": "/CV/static/media/Resume_Projects_Igor_Volodimir_Vons_Vons.4c607f9e9c7940085683.pdf",
     "static/media/hero-dark.jpg": "/CV/static/media/hero-dark.37f2556d620821979e99.jpg",
     "static/media/cell_conquest_game.jpg": "/CV/static/media/cell_conquest_game.b4a8c0ba04cccf2cfee9.jpg",
@@ -26,10 +26,10 @@
     "static/media/logo.svg": "/CV/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/CV/index.html",
     "main.cdc29534.css.map": "/CV/static/css/main.cdc29534.css.map",
-    "main.91362232.js.map": "/CV/static/js/main.91362232.js.map"
+    "main.98713b12.js.map": "/CV/static/js/main.98713b12.js.map"
   },
   "entrypoints": [
     "static/css/main.cdc29534.css",
-    "static/js/main.91362232.js"
+    "static/js/main.98713b12.js"
   ]
 }
